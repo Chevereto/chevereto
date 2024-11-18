@@ -256,9 +256,15 @@ return function (Handler $handler) {
                                 'link' => $recovery_link,
                             ];
                             if ($doing === 'password-forgot') {
-                                $mail['subject'] = _s('Reset your password at %s', getSetting('website_name', true));
+                                $mail['subject'] = _s(
+                                    'Reset your password at %s',
+                                    getSetting('website_name')
+                                );
                             } else {
-                                $mail['subject'] = _s('Confirmation required at %s', getSetting('website_name', true));
+                                $mail['subject'] = _s(
+                                    'Confirmation required at %s',
+                                    getSetting('website_name')
+                                );
                             }
                             $mail['message'] = get_email_body_str('mails/account-' . ($doing === 'password-forgot' ? 'password-reset' : 'confirm'));
                             if (send_mail($user['email'], $mail['subject'], $mail['message'])) {
@@ -375,7 +381,7 @@ return function (Handler $handler) {
                     $theme_mail = [
                         'user' => $logged_user,
                     ];
-                    $mail['subject'] = _s('Welcome to %s', getSetting('website_name', true));
+                    $mail['subject'] = _s('Welcome to %s', getSetting('website_name'));
                     $mail['message'] = get_email_body_str('mails/account-welcome');
                     if (send_mail($logged_user['email'], $mail['subject'], $mail['message'])) {
                         $is_process_done = true;
@@ -497,7 +503,7 @@ return function (Handler $handler) {
                         'user' => $logged_user,
                         'link' => $activation_link,
                     ];
-                    $mail['subject'] = _s('Confirmation required at %s', getSettings('website_name', true));
+                    $mail['subject'] = _s('Confirmation required at %s', getSettings('website_name'));
                     $mail['message'] = get_email_body_str('mails/account-confirm');
                     if (send_mail($POST['email'], $mail['subject'], $mail['message'])) {
                         $is_process_done = true;

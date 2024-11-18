@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: VERSION\n"
-"POT-Creation-Date: 2023-05-22 15:49+0000\n"
-"PO-Revision-Date: 2023-05-22 15:49+0000\n"
+"POT-Creation-Date: 2024-11-14 15:22+0000\n"
+"PO-Revision-Date: 2024-11-14 15:22+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE TEAM <EMAIL@ADDRESS>\n"
 "Language: pt\n"
@@ -14,11 +14,20 @@ msgstr ""
 msgid "You have been forbidden to use this website."
 msgstr "Foi proibido de usar este site."
 
+msgid "Moderate"
+msgstr "Moderar"
+
+msgid "View all my images"
+msgstr "Ver todas as minhas imagens"
+
 msgid "Recent"
 msgstr "Recente"
 
 msgid "Trending"
 msgstr "Popular agora"
+
+msgid "Popular"
+msgstr "Popular"
 
 msgid "Animated"
 msgstr "Animadas"
@@ -26,8 +35,18 @@ msgstr "Animadas"
 msgid "Request denied"
 msgstr "Pedido negado"
 
+msgid "terms"
+msgstr "termos"
+
+msgid "privacy policy"
+msgstr "política de privacidade"
+
 msgid "That page doesn't exist"
 msgstr "Esta página não existe"
+
+#, php-format
+msgid "Page %s"
+msgstr "Página %s"
 
 msgid "Forgot password?"
 msgstr "Esqueceu-se da senha?"
@@ -44,11 +63,14 @@ msgstr "Adicione o seu endereço de email"
 msgid "Awaiting confirmation"
 msgstr "Aguardando confirmação"
 
+msgid "Two-factor authentication"
+msgstr "Autenticação de dois factores"
+
 msgid "Email changed"
 msgstr "E-mail alterado"
 
 msgid "Invalid Username/Email"
-msgstr "Nome de usuário inválido / Email"
+msgstr "Nome de utilizador/Email inválido"
 
 msgid "User doesn't have an email."
 msgstr "O utilizador não tem um e-mail."
@@ -58,6 +80,9 @@ msgstr "A conta precisa ser ativada antes de poder usar este recurso"
 
 msgid "Account already activated"
 msgstr "Conta activada"
+
+msgid "Account banned"
+msgstr "Conta banida"
 
 msgid "Allow up to 15 minutes for the email. You can try again later."
 msgstr "Aguarde até 15 minutos pela recepção do e-mail. Poderá tentar novamente mais tarde."
@@ -86,6 +111,9 @@ msgstr "E-mail inválido"
 msgid "Email already being used"
 msgstr "Esse e-mail já está a ser utilizado"
 
+msgid "Invalid code"
+msgstr "Código inválido"
+
 msgid "Check the errors in the form to continue."
 msgstr "Verifique os erros no formulário para continuar."
 
@@ -95,6 +123,9 @@ msgstr "É preciso senha"
 msgid "Embed codes"
 msgstr "Códigos para Incorporar"
 
+msgid "albums"
+msgstr "álbuns"
+
 msgid "%a album hosted in %w"
 msgstr "Álbum %a alojado em %w"
 
@@ -102,12 +133,6 @@ msgid "image"
 msgid_plural "images"
 msgstr[0] "imagem"
 msgstr[1] "imagens"
-
-msgid "Stats"
-msgstr "Estatísticas"
-
-msgid "Images"
-msgstr "Imagens"
 
 msgid "Album"
 msgid_plural "Albums"
@@ -134,8 +159,11 @@ msgstr "Conteúdo"
 msgid "Listings"
 msgstr "Resultados"
 
-msgid "Image upload"
-msgstr "Envio de imagem"
+msgid "File uploads"
+msgstr "Envios de ficheiros"
+
+msgid "Semantics"
+msgstr "Semântica"
 
 msgid "Categories"
 msgstr "Categorias"
@@ -152,8 +180,11 @@ msgstr "Idiomas"
 msgid "Email"
 msgstr "E-mail"
 
-msgid "External storage"
-msgstr "Alojamento externo"
+msgid "Tools"
+msgstr "Ferramentas"
+
+msgid "Logo"
+msgstr "Logo"
 
 msgid "Homepage"
 msgstr "Página principal"
@@ -161,11 +192,24 @@ msgstr "Página principal"
 msgid "Pages"
 msgstr "Páginas"
 
+msgid "Consent screen"
+msgstr "Janela de consentimento"
+
+#, php-format
+msgid "Guests %s"
+msgstr "Convidados %s"
+
+msgid "External storage"
+msgstr "Alojamento externo"
+
+msgid "Routing"
+msgstr "Redireccionamento"
+
 msgid "External services"
 msgstr "Serviços externos"
 
 msgid "Flood protection"
-msgstr "Protecção contra as inundações"
+msgstr "Protecção contra abuso"
 
 msgid "IP bans"
 msgstr "Banimentos por IP"
@@ -173,17 +217,14 @@ msgstr "Banimentos por IP"
 msgid "Watermarks"
 msgstr "Marcas de água"
 
-msgid "Documentation"
-msgstr "Documentação"
-
 msgid "Support"
-msgstr "Suport"
-
-msgid "Community"
-msgstr "Comunidade"
+msgstr "Suporte"
 
 msgid "install update"
 msgstr "Instalar actualização"
+
+msgid "Stats"
+msgstr "Estatísticas"
 
 msgid "Rebuild stats"
 msgstr "Estatísticas de reconstrução"
@@ -191,41 +232,26 @@ msgstr "Estatísticas de reconstrução"
 msgid "Not your IP?"
 msgstr "Não é o seu IP?"
 
-msgid "PHP version"
-msgstr "Versão do PHP"
-
-msgid "Server"
-msgstr "Servidor"
-
-msgid "MySQL version"
-msgstr "Versão do MySQL"
-
-msgid "MySQL server info"
-msgstr "Informação do servidor MySQL"
-
-msgid "File uploads"
-msgstr "Envios de ficheiros"
-
 msgid "Enabled"
 msgstr "Ativado"
 
 msgid "Disabled"
 msgstr "Desactivado"
 
-msgid "Max. execution time"
-msgstr "Tempo máximo de execução"
+msgid "Releases"
+msgstr "Lançamentos"
 
-#, php-format
-msgid "%d second"
-msgid_plural "%d seconds"
-msgstr[0] "%d segundo"
-msgstr[1] "%d segundos"
+msgid "Community"
+msgstr "Comunidade"
 
-msgid "Memory limit"
-msgstr "Limite de memória"
+msgid "Cron last ran"
+msgstr "Última execução do agendamento"
 
-msgid "External"
-msgstr "Externo"
+msgid "PHP version"
+msgstr "Versão do PHP"
+
+msgid "Server"
+msgstr "Servidor"
 
 msgid "All"
 msgstr "Todas"
@@ -233,32 +259,15 @@ msgstr "Todas"
 msgid "search content"
 msgstr "conteúdo de pesquisa"
 
-msgid "Before pagination"
-msgstr "Antes de paginação"
-
-msgid "After pagination"
-msgstr "Depois de paginação"
-
-msgid "Before comments"
-msgstr "Antes dos comentários"
-
-msgid "Image page"
-msgstr "Página da imagem"
-
-msgid "Inside viewer top (image page)"
-msgstr "Topo da página para visualizar a imagem"
-
-msgid "Footer (image page)"
-msgstr "Rodapé (página imagem)"
-
-msgid "User profile page"
-msgstr "Página de perfil do utilizador"
-
-msgid "After top (user profile)"
-msgstr "Depois de topo (perfil do utlizador)"
-
 msgid "Explore"
 msgstr "Explorar"
+
+#, php-format
+msgid "After top (%s page)"
+msgstr "Depois do topo (%s página)"
+
+msgid "NSFW"
+msgstr "18+"
 
 msgid "Invalid website name"
 msgstr "Nome da página inválido"
@@ -268,6 +277,10 @@ msgstr "Idioma inválido"
 
 msgid "Invalid timezone"
 msgstr "Fuso horário inválido"
+
+#, php-format
+msgid "Invalid value: %s"
+msgstr "Valor inválido: %s"
 
 msgid "Invalid thumb width"
 msgstr "largura da miniatura inválida"
@@ -280,46 +293,6 @@ msgstr "Tema inválido"
 
 msgid "Invalid value"
 msgstr "Valor inválido"
-
-msgid "Invalid theme image listing size"
-msgstr "Tamanho para os resultados do tema inválido"
-
-msgid "Invalid user id"
-msgstr "ID de usuário Inválido"
-
-msgid "Invalid email mode"
-msgstr "Modo de e-mail inválido"
-
-msgid "Invalid SMTP port"
-msgstr "Porta SMTP inválida"
-
-msgid "Invalid SMTP security"
-msgstr "Segurança inválida SMTP "
-
-msgid "Invalid website mode"
-msgstr "Modo de website inválido"
-
-msgid "Invalid website content privacy mode"
-msgstr "modo de conteúdo do site privacidade inválido"
-
-msgid "Invalid homepage style"
-msgstr "Estilo da página principal inválido"
-
-msgid "Invalid URL"
-msgstr "URL inválido"
-
-msgid "Invalid upload image path"
-msgstr "Caminho para o envio de imagens inválido"
-
-#, php-format
-msgid "Max. allowed %s"
-msgstr "Máximo permitido %s"
-
-msgid "Invalid SMTP server"
-msgstr "Servidor SMTP inválido"
-
-msgid "Invalid SMTP username"
-msgstr "Nome de usuário SMTP inválido"
 
 msgid "Dashboard"
 msgstr "Administração"
@@ -342,21 +315,6 @@ msgstr "Imagem %i na categoria %c"
 msgid "Image %i hosted in %w"
 msgstr "Imagem %i alojada em %w"
 
-msgid "Direct links"
-msgstr "Links Diretos"
-
-msgid "Image link"
-msgstr "Link da imagem"
-
-msgid "Image URL"
-msgstr "URL da imagem"
-
-msgid "Thumbnail URL"
-msgstr "URL Thumbnail"
-
-msgid "Medium URL"
-msgstr "URL Médio"
-
 msgid "Login needed"
 msgstr "Necessário iniciar sessão"
 
@@ -367,9 +325,6 @@ msgstr[1] "imagens"
 
 msgid "Category"
 msgstr "Categoria"
-
-msgid "IP address already banned"
-msgstr "Endereço de IP já banido"
 
 msgid "Missing values"
 msgstr "Valores em falta"
@@ -382,6 +337,9 @@ msgstr "Papel inválido"
 
 msgid "Username already being used"
 msgstr "Nome de utilizador já está a ser utilizado"
+
+msgid "IP address already banned"
+msgstr "Endereço de IP já banido"
 
 #, php-format
 msgid "%s has been disconnected."
@@ -448,6 +406,9 @@ msgstr "Apagar utilizador"
 
 msgid "User ID"
 msgstr "ID de utilizador"
+
+msgid "Images"
+msgstr "Imagens"
 
 msgid "Register date"
 msgstr "Data de registo"
@@ -642,27 +603,23 @@ msgstr "Imagem de fundo eliminada."
 msgid "Error deleting profile background image."
 msgstr "Erro apagar imagem de fundo do perfil"
 
-#, javascript-format
-msgid "Update available v%s"
-msgstr "Actualização disponível v%s"
-
-msgid "Like"
-msgstr "Gostar"
-
 msgid "Create album"
 msgstr "Criar álbum"
-
-msgid "Edit"
-msgstr "Editar"
 
 msgid "Delete"
 msgstr "Eliminar"
 
-msgid "Previous"
-msgstr "Anterior"
+msgid "Edit"
+msgstr "Editar"
+
+msgid "Like"
+msgstr "Gostar"
 
 msgid "Next"
 msgstr "Próximo"
+
+msgid "Previous"
+msgstr "Anterior"
 
 msgid "File too big."
 msgstr "Ficheiro muito grande."
@@ -676,9 +633,6 @@ msgstr "Alguns arquivos não puderam ser adiccionados"
 #, javascript-format
 msgid "%s's Albums"
 msgstr "Álbuns de %s"
-
-msgid "Image edited successfully."
-msgstr "Imagem editada com sucesso."
 
 msgid "private"
 msgstr "Privado"
@@ -820,9 +774,6 @@ msgstr "Obrigado por se juntar a nós"
 msgid "This email was sent from %w %u"
 msgstr "Este e-mail foi enviado por %w %u"
 
-msgid "Select the images to upload"
-msgstr "Selecionar as imagens para envio"
-
 msgid "complete"
 msgstr "completo"
 
@@ -862,35 +813,11 @@ msgstr "Assinalar como inseguro"
 msgid "Description"
 msgstr "Descrição"
 
-msgid "Add image URLs"
-msgstr "Adicionar URLs de imagem"
-
-msgid "Add the image URLs here"
-msgstr "Adicione os URLs de imagem aqui"
-
 msgid "Error report"
 msgstr "Relatório de erro"
 
 msgid "Direct"
 msgstr "Directo"
-
-msgid "HTML Codes"
-msgstr "Códigos HTML"
-
-msgid "HTML medium linked"
-msgstr "HTML médio"
-
-msgid "HTML thumbnail linked"
-msgstr "HTML da miniatura"
-
-msgid "BBCode medium linked"
-msgstr "Código BBCode do tamanho médio"
-
-msgid "BBCode thumbnail linked"
-msgstr "Código BBCode da miniatura"
-
-msgid "Viewer links"
-msgstr "Ver links"
 
 msgid "All these words"
 msgstr "Todas estas palavras"
@@ -1023,6 +950,9 @@ msgstr "Entre com outra conta"
 
 msgid "There's nothing to show here."
 msgstr "Não há nada para ver aqui."
+
+msgid "Selection will be assigned to %t."
+msgstr "A selecção vai ser atribuída a %t."
 
 msgid "There is no categories."
 msgstr "Não existem categorias."
@@ -1198,6 +1128,34 @@ msgstr "Activo"
 msgid "Disk used"
 msgstr "Espaço usado"
 
+msgid "Enable uploads"
+msgstr "Activar envios"
+
+msgid "Guest uploads"
+msgstr "Envios de visitantes"
+
+msgid "Enable this if you want to allow non registered users to upload."
+msgstr "Ative isto se quiser permitir que os utilizadores não registados façam envios."
+
+msgid "Relative to Chevereto root"
+msgstr "Relativo ao root do Chevereto"
+
+msgid "Storage mode"
+msgstr "Modo de armazenamento"
+
+#, php-format
+msgid "Datefolders creates %s structure"
+msgstr "Datefolders cria %s estrutura"
+
+msgid "File naming method"
+msgstr "Método de nomeação do arquivo"
+
+msgid "Thumb size"
+msgstr "Tamanho da miniatura"
+
+msgid "Thumbnails will be fixed to this size."
+msgstr "As miniaturas serão ajustadas para este tamanho."
+
 msgid "Notify to email"
 msgstr "Notificar para o e-mail"
 
@@ -1242,40 +1200,6 @@ msgstr "Branco"
 
 msgid "Default"
 msgstr "Padrão"
-
-msgid "Enable uploads"
-msgstr "Activar envios"
-
-msgid "Guest uploads"
-msgstr "Envios de visitantes"
-
-msgid "Enable this if you want to allow non registered users to upload."
-msgstr "Ative isto se quiser permitir que os utilizadores não registados façam envios."
-
-msgid "Image path"
-msgstr "Caminho da imagem"
-
-msgid "Relative to Chevereto root"
-msgstr "Relativo ao root do Chevereto"
-
-msgid "Where to store the images? Relative to Chevereto root."
-msgstr "Onde alojar as imagens? Relativo ao root do Chevereto."
-
-msgid "Storage mode"
-msgstr "Modo de armazenamento"
-
-#, php-format
-msgid "Datefolders creates %s structure"
-msgstr "Datefolders cria %s estrutura"
-
-msgid "File naming method"
-msgstr "Método de nomeação do arquivo"
-
-msgid "Thumb size"
-msgstr "Tamanho da miniatura"
-
-msgid "Thumbnails will be fixed to this size."
-msgstr "As miniaturas serão ajustadas para este tamanho."
 
 msgid "Expires"
 msgstr "Expira"
@@ -1518,9 +1442,6 @@ msgstr "Adicionado a %s"
 
 msgid "Add IP ban"
 msgstr "Adicionar banimento de IP"
-
-msgid "Upload and share your images."
-msgstr "Envie e compartilhe as suas imagens."
 
 msgid "Sign up to unlock all the features"
 msgstr "Registre-se agora Grátis"

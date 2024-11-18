@@ -1894,10 +1894,10 @@ CHV.fn.uploader = {
                     },
                         "*"
                     );
+                    if(CHV.obj.opener.uploadPlugin[window.name].autoClose) {
+                        window.close();
+                    }
                 }
-            }
-            if(CHV.obj.opener.uploadPlugin[window.name].autoClose) {
-                window.close();
             }
         } else {
             $('[data-action="openerPostMessage"]', this.selectors.root).remove();
@@ -4078,7 +4078,7 @@ $(function () {
             );
             CHV.obj.opener.uploadPlugin[window.name] = {
                 autoInsert: false,
-                autoClose: false,
+                autoClose: true,
             };
         });
         $(window).on("message", function (e) {
@@ -4231,6 +4231,8 @@ $(function () {
                 $(this).addClass("current");
                 CHV.fn.Palettes.set(palette);
                 CHV.fn.Palettes.save();
+                const event = new Event("paletteChanged");
+                document.dispatchEvent(event);
                 break;
         }
     });

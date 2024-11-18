@@ -1,14 +1,28 @@
 <?php
 
 use Chevereto\Legacy\Classes\Settings;
+use function Chevereto\Vars\env;
 
 // @phpstan-ignore-next-line
 if (! defined('ACCESS') || ! ACCESS) {
     exit('This file cannot be directly accessed.');
-} ?>
-<h1><i class="fa fa-box-open"></i> Ready to install</h1>
-<p>Fill this form with the details of the initial admin account you want to use.</p>
-<p>You can change this account later on.</p>
+}
+$version_patch = APP_VERSION;
+$explode = explode('.', $version_patch);
+$version_major = $explode[0];
+$version_minor = $version_major . '.' . $explode[1];
+$version_link = strtr(
+    'https://releases.chevereto.com/%major%.X/%minor%/%patch%.html',
+    [
+        '%major%' => $version_major,
+        '%minor%' => $version_minor,
+        '%patch%' => $version_patch,
+    ]
+);
+$edition = ucfirst(env()['CHEVERETO_EDITION'] ?? '');
+?>
+<h1><i class="fa fa-box-open"></i> Chevereto <?php echo $edition; ?> <a class="label--version" target="_blank" href="<?php echo $version_link; ?>"><?php echo APP_VERSION; ?></a></h1>
+<p>Fill this form with the details of the initial admin account you want to use. You can change this account later on.</p>
 <?php if ($error ?? false) { ?>
 <p class="highlight padding-10"><?php echo $error_message ?? ''; ?></p>
 <?php } ?>

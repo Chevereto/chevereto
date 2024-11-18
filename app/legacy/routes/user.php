@@ -379,7 +379,7 @@ return function (Handler $handler) {
     $tags_display = [];
     if ($isDisplayUsedTags) {
         $tagsSql = <<<MySQL
-        SELECT t.tag_name name, tu.tag_user_count count
+        SELECT DISTINCT t.tag_name name, tu.tag_user_count count
         FROM `{$tagsTable}` t
         INNER JOIN `{$tagsUsersTable}` tu
             ON tu.tag_user_tag_id=t.tag_id
@@ -391,7 +391,7 @@ return function (Handler $handler) {
         MySQL;
         if ($type === 'albums') {
             $tagsSql = <<<MySQL
-            SELECT t.tag_name name, ta.tag_album_count count
+            SELECT DISTINCT t.tag_name name, ta.tag_album_count count
             FROM `{$tagsTable}` t
             INNER JOIN `{$tagsAlbumsTable}` ta
                 ON ta.tag_album_tag_id=t.tag_id

@@ -1,8 +1,8 @@
 <?php
 $translation_header = array (
   'Project-Id-Version' => 'VERSION',
-  'POT-Creation-Date' => '2023-05-22 15:49+0000',
-  'PO-Revision-Date' => '2023-05-22 15:49+0000',
+  'POT-Creation-Date' => '2024-11-14 15:22+0000',
+  'PO-Revision-Date' => '2024-11-14 15:22+0000',
   'Last-Translator' => 'FULL NAME <EMAIL@ADDRESS>',
   'Language-Team' => 'LANGUAGE TEAM <EMAIL@ADDRESS>',
   'Language' => 'pt',
@@ -19,11 +19,20 @@ $translation_table = [
 	"You have been forbidden to use this website." => [
 		0 => "Foi proibido de usar este site.",
 	],
+	"Moderate" => [
+		0 => "Moderar",
+	],
+	"View all my images" => [
+		0 => "Ver todas as minhas imagens",
+	],
 	"Recent" => [
 		0 => "Recente",
 	],
 	"Trending" => [
 		0 => "Popular agora",
+	],
+	"Popular" => [
+		0 => "Popular",
 	],
 	"Animated" => [
 		0 => "Animadas",
@@ -31,8 +40,17 @@ $translation_table = [
 	"Request denied" => [
 		0 => "Pedido negado",
 	],
+	"terms" => [
+		0 => "termos",
+	],
+	"privacy policy" => [
+		0 => "política de privacidade",
+	],
 	"That page doesn't exist" => [
 		0 => "Esta página não existe",
+	],
+	"Page %s" => [
+		0 => "Página %s",
 	],
 	"Forgot password?" => [
 		0 => "Esqueceu-se da senha?",
@@ -49,11 +67,14 @@ $translation_table = [
 	"Awaiting confirmation" => [
 		0 => "Aguardando confirmação",
 	],
+	"Two-factor authentication" => [
+		0 => "Autenticação de dois factores",
+	],
 	"Email changed" => [
 		0 => "E-mail alterado",
 	],
 	"Invalid Username/Email" => [
-		0 => "Nome de usuário inválido / Email",
+		0 => "Nome de utilizador/Email inválido",
 	],
 	"User doesn't have an email." => [
 		0 => "O utilizador não tem um e-mail.",
@@ -63,6 +84,9 @@ $translation_table = [
 	],
 	"Account already activated" => [
 		0 => "Conta activada",
+	],
+	"Account banned" => [
+		0 => "Conta banida",
 	],
 	"Allow up to 15 minutes for the email. You can try again later." => [
 		0 => "Aguarde até 15 minutos pela recepção do e-mail. Poderá tentar novamente mais tarde.",
@@ -88,6 +112,9 @@ $translation_table = [
 	"Email already being used" => [
 		0 => "Esse e-mail já está a ser utilizado",
 	],
+	"Invalid code" => [
+		0 => "Código inválido",
+	],
 	"Check the errors in the form to continue." => [
 		0 => "Verifique os erros no formulário para continuar.",
 	],
@@ -97,18 +124,15 @@ $translation_table = [
 	"Embed codes" => [
 		0 => "Códigos para Incorporar",
 	],
+	"albums" => [
+		0 => "álbuns",
+	],
 	"%a album hosted in %w" => [
 		0 => "Álbum %a alojado em %w",
 	],
 	"image" => [
 		0 => "imagem",
 		1 => "imagens",
-	],
-	"Stats" => [
-		0 => "Estatísticas",
-	],
-	"Images" => [
-		0 => "Imagens",
 	],
 	"Album" => [
 		0 => "Álbum",
@@ -133,8 +157,11 @@ $translation_table = [
 	"Listings" => [
 		0 => "Resultados",
 	],
-	"Image upload" => [
-		0 => "Envio de imagem",
+	"File uploads" => [
+		0 => "Envios de ficheiros",
+	],
+	"Semantics" => [
+		0 => "Semântica",
 	],
 	"Categories" => [
 		0 => "Categorias",
@@ -151,8 +178,11 @@ $translation_table = [
 	"Email" => [
 		0 => "E-mail",
 	],
-	"External storage" => [
-		0 => "Alojamento externo",
+	"Tools" => [
+		0 => "Ferramentas",
+	],
+	"Logo" => [
+		0 => "Logo",
 	],
 	"Homepage" => [
 		0 => "Página principal",
@@ -160,11 +190,23 @@ $translation_table = [
 	"Pages" => [
 		0 => "Páginas",
 	],
+	"Consent screen" => [
+		0 => "Janela de consentimento",
+	],
+	"Guests %s" => [
+		0 => "Convidados %s",
+	],
+	"External storage" => [
+		0 => "Alojamento externo",
+	],
+	"Routing" => [
+		0 => "Redireccionamento",
+	],
 	"External services" => [
 		0 => "Serviços externos",
 	],
 	"Flood protection" => [
-		0 => "Protecção contra as inundações",
+		0 => "Protecção contra abuso",
 	],
 	"IP bans" => [
 		0 => "Banimentos por IP",
@@ -172,17 +214,14 @@ $translation_table = [
 	"Watermarks" => [
 		0 => "Marcas de água",
 	],
-	"Documentation" => [
-		0 => "Documentação",
-	],
 	"Support" => [
-		0 => "Suport",
-	],
-	"Community" => [
-		0 => "Comunidade",
+		0 => "Suporte",
 	],
 	"install update" => [
 		0 => "Instalar actualização",
+	],
+	"Stats" => [
+		0 => "Estatísticas",
 	],
 	"Rebuild stats" => [
 		0 => "Estatísticas de reconstrução",
@@ -190,39 +229,26 @@ $translation_table = [
 	"Not your IP?" => [
 		0 => "Não é o seu IP?",
 	],
-	"PHP version" => [
-		0 => "Versão do PHP",
-	],
-	"Server" => [
-		0 => "Servidor",
-	],
-	"MySQL version" => [
-		0 => "Versão do MySQL",
-	],
-	"MySQL server info" => [
-		0 => "Informação do servidor MySQL",
-	],
-	"File uploads" => [
-		0 => "Envios de ficheiros",
-	],
 	"Enabled" => [
 		0 => "Ativado",
 	],
 	"Disabled" => [
 		0 => "Desactivado",
 	],
-	"Max. execution time" => [
-		0 => "Tempo máximo de execução",
+	"Releases" => [
+		0 => "Lançamentos",
 	],
-	"%d second" => [
-		0 => "%d segundo",
-		1 => "%d segundos",
+	"Community" => [
+		0 => "Comunidade",
 	],
-	"Memory limit" => [
-		0 => "Limite de memória",
+	"Cron last ran" => [
+		0 => "Última execução do agendamento",
 	],
-	"External" => [
-		0 => "Externo",
+	"PHP version" => [
+		0 => "Versão do PHP",
+	],
+	"Server" => [
+		0 => "Servidor",
 	],
 	"All" => [
 		0 => "Todas",
@@ -230,32 +256,14 @@ $translation_table = [
 	"search content" => [
 		0 => "conteúdo de pesquisa",
 	],
-	"Before pagination" => [
-		0 => "Antes de paginação",
-	],
-	"After pagination" => [
-		0 => "Depois de paginação",
-	],
-	"Before comments" => [
-		0 => "Antes dos comentários",
-	],
-	"Image page" => [
-		0 => "Página da imagem",
-	],
-	"Inside viewer top (image page)" => [
-		0 => "Topo da página para visualizar a imagem",
-	],
-	"Footer (image page)" => [
-		0 => "Rodapé (página imagem)",
-	],
-	"User profile page" => [
-		0 => "Página de perfil do utilizador",
-	],
-	"After top (user profile)" => [
-		0 => "Depois de topo (perfil do utlizador)",
-	],
 	"Explore" => [
 		0 => "Explorar",
+	],
+	"After top (%s page)" => [
+		0 => "Depois do topo (%s página)",
+	],
+	"NSFW" => [
+		0 => "18+",
 	],
 	"Invalid website name" => [
 		0 => "Nome da página inválido",
@@ -265,6 +273,9 @@ $translation_table = [
 	],
 	"Invalid timezone" => [
 		0 => "Fuso horário inválido",
+	],
+	"Invalid value: %s" => [
+		0 => "Valor inválido: %s",
 	],
 	"Invalid thumb width" => [
 		0 => "largura da miniatura inválida",
@@ -277,45 +288,6 @@ $translation_table = [
 	],
 	"Invalid value" => [
 		0 => "Valor inválido",
-	],
-	"Invalid theme image listing size" => [
-		0 => "Tamanho para os resultados do tema inválido",
-	],
-	"Invalid user id" => [
-		0 => "ID de usuário Inválido",
-	],
-	"Invalid email mode" => [
-		0 => "Modo de e-mail inválido",
-	],
-	"Invalid SMTP port" => [
-		0 => "Porta SMTP inválida",
-	],
-	"Invalid SMTP security" => [
-		0 => "Segurança inválida SMTP ",
-	],
-	"Invalid website mode" => [
-		0 => "Modo de website inválido",
-	],
-	"Invalid website content privacy mode" => [
-		0 => "modo de conteúdo do site privacidade inválido",
-	],
-	"Invalid homepage style" => [
-		0 => "Estilo da página principal inválido",
-	],
-	"Invalid URL" => [
-		0 => "URL inválido",
-	],
-	"Invalid upload image path" => [
-		0 => "Caminho para o envio de imagens inválido",
-	],
-	"Max. allowed %s" => [
-		0 => "Máximo permitido %s",
-	],
-	"Invalid SMTP server" => [
-		0 => "Servidor SMTP inválido",
-	],
-	"Invalid SMTP username" => [
-		0 => "Nome de usuário SMTP inválido",
 	],
 	"Dashboard" => [
 		0 => "Administração",
@@ -338,21 +310,6 @@ $translation_table = [
 	"Image %i hosted in %w" => [
 		0 => "Imagem %i alojada em %w",
 	],
-	"Direct links" => [
-		0 => "Links Diretos",
-	],
-	"Image link" => [
-		0 => "Link da imagem",
-	],
-	"Image URL" => [
-		0 => "URL da imagem",
-	],
-	"Thumbnail URL" => [
-		0 => "URL Thumbnail",
-	],
-	"Medium URL" => [
-		0 => "URL Médio",
-	],
 	"Login needed" => [
 		0 => "Necessário iniciar sessão",
 	],
@@ -362,9 +319,6 @@ $translation_table = [
 	],
 	"Category" => [
 		0 => "Categoria",
-	],
-	"IP address already banned" => [
-		0 => "Endereço de IP já banido",
 	],
 	"Missing values" => [
 		0 => "Valores em falta",
@@ -377,6 +331,9 @@ $translation_table = [
 	],
 	"Username already being used" => [
 		0 => "Nome de utilizador já está a ser utilizado",
+	],
+	"IP address already banned" => [
+		0 => "Endereço de IP já banido",
 	],
 	"%s has been disconnected." => [
 		0 => "%s foi desconectado.",
@@ -440,6 +397,9 @@ $translation_table = [
 	],
 	"User ID" => [
 		0 => "ID de utilizador",
+	],
+	"Images" => [
+		0 => "Imagens",
 	],
 	"Register date" => [
 		0 => "Data de registo",
@@ -563,7 +523,7 @@ $translation_table = [
 		0 => "%s atrás",
 	],
 	"moments ago" => [
-		0 => "à momentos atrás",
+		0 => "há poucos segundos",
 	],
 	"Random" => [
 		0 => "Aleatório",
@@ -619,26 +579,23 @@ $translation_table = [
 	"Error deleting profile background image." => [
 		0 => "Erro apagar imagem de fundo do perfil",
 	],
-	"Update available v%s" => [
-		0 => "Actualização disponível v%s",
-	],
-	"Like" => [
-		0 => "Gostar",
-	],
 	"Create album" => [
 		0 => "Criar álbum",
-	],
-	"Edit" => [
-		0 => "Editar",
 	],
 	"Delete" => [
 		0 => "Eliminar",
 	],
-	"Previous" => [
-		0 => "Anterior",
+	"Edit" => [
+		0 => "Editar",
+	],
+	"Like" => [
+		0 => "Gostar",
 	],
 	"Next" => [
 		0 => "Próximo",
+	],
+	"Previous" => [
+		0 => "Anterior",
 	],
 	"File too big." => [
 		0 => "Ficheiro muito grande.",
@@ -651,9 +608,6 @@ $translation_table = [
 	],
 	"%s's Albums" => [
 		0 => "Álbuns de %s",
-	],
-	"Image edited successfully." => [
-		0 => "Imagem editada com sucesso.",
 	],
 	"private" => [
 		0 => "Privado",
@@ -787,9 +741,6 @@ $translation_table = [
 	"This email was sent from %w %u" => [
 		0 => "Este e-mail foi enviado por %w %u",
 	],
-	"Select the images to upload" => [
-		0 => "Selecionar as imagens para envio",
-	],
 	"complete" => [
 		0 => "completo",
 	],
@@ -829,35 +780,11 @@ $translation_table = [
 	"Description" => [
 		0 => "Descrição",
 	],
-	"Add image URLs" => [
-		0 => "Adicionar URLs de imagem",
-	],
-	"Add the image URLs here" => [
-		0 => "Adicione os URLs de imagem aqui",
-	],
 	"Error report" => [
 		0 => "Relatório de erro",
 	],
 	"Direct" => [
 		0 => "Directo",
-	],
-	"HTML Codes" => [
-		0 => "Códigos HTML",
-	],
-	"HTML medium linked" => [
-		0 => "HTML médio",
-	],
-	"HTML thumbnail linked" => [
-		0 => "HTML da miniatura",
-	],
-	"BBCode medium linked" => [
-		0 => "Código BBCode do tamanho médio",
-	],
-	"BBCode thumbnail linked" => [
-		0 => "Código BBCode da miniatura",
-	],
-	"Viewer links" => [
-		0 => "Ver links",
 	],
 	"All these words" => [
 		0 => "Todas estas palavras",
@@ -990,6 +917,9 @@ $translation_table = [
 	],
 	"There's nothing to show here." => [
 		0 => "Não há nada para ver aqui.",
+	],
+	"Selection will be assigned to %t." => [
+		0 => "A selecção vai ser atribuída a %t.",
 	],
 	"There is no categories." => [
 		0 => "Não existem categorias.",
@@ -1162,6 +1092,33 @@ $translation_table = [
 	"Disk used" => [
 		0 => "Espaço usado",
 	],
+	"Enable uploads" => [
+		0 => "Activar envios",
+	],
+	"Guest uploads" => [
+		0 => "Envios de visitantes",
+	],
+	"Enable this if you want to allow non registered users to upload." => [
+		0 => "Ative isto se quiser permitir que os utilizadores não registados façam envios.",
+	],
+	"Relative to Chevereto root" => [
+		0 => "Relativo ao root do Chevereto",
+	],
+	"Storage mode" => [
+		0 => "Modo de armazenamento",
+	],
+	"Datefolders creates %s structure" => [
+		0 => "Datefolders cria %s estrutura",
+	],
+	"File naming method" => [
+		0 => "Método de nomeação do arquivo",
+	],
+	"Thumb size" => [
+		0 => "Tamanho da miniatura",
+	],
+	"Thumbnails will be fixed to this size." => [
+		0 => "As miniaturas serão ajustadas para este tamanho.",
+	],
 	"Notify to email" => [
 		0 => "Notificar para o e-mail",
 	],
@@ -1206,39 +1163,6 @@ $translation_table = [
 	],
 	"Default" => [
 		0 => "Padrão",
-	],
-	"Enable uploads" => [
-		0 => "Activar envios",
-	],
-	"Guest uploads" => [
-		0 => "Envios de visitantes",
-	],
-	"Enable this if you want to allow non registered users to upload." => [
-		0 => "Ative isto se quiser permitir que os utilizadores não registados façam envios.",
-	],
-	"Image path" => [
-		0 => "Caminho da imagem",
-	],
-	"Relative to Chevereto root" => [
-		0 => "Relativo ao root do Chevereto",
-	],
-	"Where to store the images? Relative to Chevereto root." => [
-		0 => "Onde alojar as imagens? Relativo ao root do Chevereto.",
-	],
-	"Storage mode" => [
-		0 => "Modo de armazenamento",
-	],
-	"Datefolders creates %s structure" => [
-		0 => "Datefolders cria %s estrutura",
-	],
-	"File naming method" => [
-		0 => "Método de nomeação do arquivo",
-	],
-	"Thumb size" => [
-		0 => "Tamanho da miniatura",
-	],
-	"Thumbnails will be fixed to this size." => [
-		0 => "As miniaturas serão ajustadas para este tamanho.",
 	],
 	"Expires" => [
 		0 => "Expira",
@@ -1475,13 +1399,10 @@ $translation_table = [
 		0 => "Endereço de email",
 	],
 	"Added to %s" => [
-		0 => "Adicionar a %s",
+		0 => "Adicionado a %s",
 	],
 	"Add IP ban" => [
 		0 => "Adicionar banimento de IP",
-	],
-	"Upload and share your images." => [
-		0 => "Envie e compartilhe as suas imagens.",
 	],
 	"Sign up to unlock all the features" => [
 		0 => "Registre-se agora Grátis",

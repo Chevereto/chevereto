@@ -648,3 +648,18 @@ body.body--installing .flex-box .loader {
 .description-meta:empty {
     display: none;
 }
+
+a.label--version {
+    color: inherit;
+    text-decoration: none;
+    font-size: .6em;
+    border-radius: .2em;
+    background-color: rgba(0, 0, 0, .1);
+    padding: .3em 0.4em;
+    display: block;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}

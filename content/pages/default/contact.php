@@ -55,7 +55,7 @@ if (post() !== [] && ! $is_sent) {
         $is_error = true;
     } else {
         $email = trim(post()['email']);
-        $subject = getSetting('website_name', true) . ' contact form';
+        $subject = getSetting('website_name') . ' contact form';
         $name = post()['name'];
         $send_mail = [
             'to' => getSettings()['email_incoming_email'],
@@ -63,7 +63,7 @@ if (post() !== [] && ! $is_sent) {
                 getSettings()['email_from_email'],
                 $name
                     . ' ('
-                    . getSetting('website_name', true)
+                    . getSetting('website_name')
                     . ' contact form)',
             ],
             'reply-to' => [$email],

@@ -3,8 +3,8 @@
   Chevereto Popup Upload Plugin (PUP)
 
   @website	https://chevereto.com/
-  @version	1.1.0
-  @author	Rodolfo Berrios A. <http://rodolfoberrios.com/>
+  @version	1.1.1
+  @author	Rodolfo Berrios A. <https://rodolfoberrios.com/>
 
   --------------------------------------------------------------------- */
   (function () {
@@ -15,6 +15,7 @@
             mode: "auto",
             lang: "auto",
             autoInsert: "bbcode-embed-medium",
+            autoClose: 1,
             palette: "default",
             init: "onload",
             containerClass: 1,

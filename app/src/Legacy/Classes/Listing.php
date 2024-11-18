@@ -488,31 +488,33 @@ class Listing
                 $tableTagsFiles = $tables['tags_files'];
                 $relationTagIdColumn = 'tag_file_tag_id';
                 $tableImages = $tables['images'];
+                $tagPivot = 'tag_file_file_id';
                 $tagSql = <<<MySQL
                 EXISTS (
-                    SELECT *
+                    SELECT `{$tagPivot}`
                     FROM `{$tableTagsFiles}`
                     WHERE `{$relationTagIdColumn}` IN ({$inTagsSQL})
-                    AND `tag_file_file_id` = {$tableImages}.image_id
+                    AND `{$tagPivot}` = {$tableImages}.image_id
 
                 MySQL;
                 if ($this->type === 'albums') {
                     $tableRelation = $tables['tags_albums'];
                     $relationTagIdColumn = 'tag_album_tag_id';
                     $tableAlbums = $tables['albums'];
+                    $tagPivot = 'tag_album_album_id';
                     $tagSql = <<<MySQL
                     EXISTS (
-                        SELECT *
+                        SELECT `{$tagPivot}`
                         FROM `{$tableRelation}`
                         WHERE `{$relationTagIdColumn}` IN ({$inTagsSQL})
-                        AND `tag_album_album_id` = {$tableAlbums}.album_id
+                        AND `{$tagPivot}` = {$tableAlbums}.album_id
                         AND `tag_album_count` > 0
 
                     MySQL;
                 }
                 if ($this->tagsMatch === 'all') {
                     $tagBinds[':tag_count'] = count($this->tagsIds);
-                    $tagSql .= " HAVING COUNT(`{$relationTagIdColumn}`) = :tag_count";
+                    $tagSql .= ' HAVING COUNT(*) = :tag_count';
                 }
                 $tagSql .= ')';
                 if ($this->where === '') {

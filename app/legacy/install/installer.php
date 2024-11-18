@@ -634,6 +634,7 @@ $settings_updates = [
     ],
     '4.2.1' => null,
     '4.2.2' => null,
+    '4.2.3' => null,
 ];
 
 /**
@@ -1090,11 +1091,11 @@ if ($installed_version !== '' && empty($paramsCheck)) {
             ],
             '3.5.0' => [
                 'images' => [
-                    'image_original_exifdata' => [
-                        'op' => 'MODIFY',
-                        'type' => 'text',
-                        'prop' => null,
-                    ],
+                    // 'image_original_exifdata' => [
+                    //     'op' => 'MODIFY',
+                    //     'type' => 'text',
+                    //     'prop' => null,
+                    // ],
                     'image_storage' => [
                         'op' => 'CHANGE',
                         'to' => 'image_storage_mode',
@@ -2011,6 +2012,22 @@ if ($installed_version !== '' && empty($paramsCheck)) {
                 VALUES('news_check_datetimegmt', (SELECT `setting_value` FROM `%table_prefix%settings` WHERE `setting_name` = 'news_check_datetimegmt'), 'string');
                 SQL,
             ],
+            '4.2.3' => [
+                'images' => [
+                    'image_original_exifdata' => [
+                        'op' => 'MODIFY',
+                        'type' => 'mediumtext',
+                        'prop' => null,
+                    ],
+                ],
+                'importing' => [
+                    'importing_content_id' => [
+                        'op' => 'MODIFY',
+                        'type' => 'bigint(32)',
+                        'prop' => 'DEFAULT NULL',
+                    ],
+                ],
+            ],
         ];
         $sql_update = [];
         if (! $maintenance) {
@@ -2410,7 +2427,7 @@ EOT;
                         ADD `image_source_md5` varchar(32) DEFAULT NULL,
                         ADD `image_storage_mode` enum('datefolder','direct','old') NOT NULL DEFAULT 'datefolder',
                         ADD `image_original_filename` text NOT NULL,
-                        ADD `image_original_exifdata` text,
+                        ADD `image_original_exifdata` mediumtext,
                         ADD `image_views` bigint(32) NOT NULL DEFAULT '0',
                         ADD `image_category_id` bigint(32) DEFAULT NULL,
                         ADD `image_chain` tinyint(128) NOT NULL,

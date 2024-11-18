@@ -149,7 +149,7 @@ return function (Handler $handler) {
     $routesLinkLabels = $routes;
     $paidRoutes = [];
     $paidRoutesEnv = [
-        'bulk-importer' => ['pro', 'CHEVERETO_ENABLE_BULK_IMPORTER'],
+        // 'bulk-importer' => ['pro', 'CHEVERETO_ENABLE_BULK_IMPORTER'],
     ];
     $removeSaaSContextRoutes = [
         'bulk-importer' => ! ((bool) env()['CHEVERETO_ENABLE_BULK_IMPORTER']),
@@ -250,7 +250,6 @@ return function (Handler $handler) {
         'homepage' => ['lite', 'CHEVERETO_ENABLE_USERS'],
         'ip-bans' => ['pro', 'CHEVERETO_ENABLE_IP_BANS'],
         'login-providers' => ['pro', 'CHEVERETO_ENABLE_LOGIN_PROVIDERS'],
-        'logo' => ['free', 'CHEVERETO_ENABLE_LOGO_CUSTOM'],
         'pages' => ['lite', 'CHEVERETO_ENABLE_PAGES'],
         'routing' => ['pro', 'CHEVERETO_ENABLE_ROUTING'],
         'users' => ['lite', 'CHEVERETO_ENABLE_USERS'],

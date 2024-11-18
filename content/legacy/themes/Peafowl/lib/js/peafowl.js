@@ -1226,14 +1226,14 @@ $(function () {
         $target.toggle();
     });
 
-    // Cookie law thing
     $(document).on("click", "[data-action=cookie-law-close]", function () {
         var $cookie = $(this).closest("#cookie-law-banner");
         var cookieName =
             typeof $cookie.data("cookie") !== typeof undefined
                 ? $cookie.data("cookie")
                 : "PF_COOKIE_LAW_DISPLAY";
-        Cookies.set(cookieName, 0, { expires: 365 });
+        var cookieExpires = new Date(new Date().getTime()+1000*60*60*24*365).toGMTString();
+        document.cookie = `${cookieName}=0; expires=${cookieExpires}; path=/`;
         $cookie.remove();
     });
 

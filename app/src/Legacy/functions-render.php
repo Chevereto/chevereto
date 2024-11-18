@@ -233,7 +233,7 @@ function get_share_links(array $share_element = [])
                 'label' => 'Email',
             ],
             'facebook' => [
-                'url' => 'http://www.facebook.com/share.php?u=%URL%',
+                'url' => 'https://www.facebook.com/share.php?u=%URL%',
                 'label' => 'Facebook',
             ],
             'x-twitter' => [
@@ -270,15 +270,15 @@ function get_share_links(array $share_element = [])
                 'label' => '分享到QQ',
             ],
             'reddit' => [
-                'url' => 'http://old.reddit.com/submit?type=link&url=%URL%&title=%TITLE%&text=%DESCRIPTION%',
+                'url' => 'https://old.reddit.com/submit?type=link&url=%URL%&title=%TITLE%&text=%DESCRIPTION%',
                 'label' => 'reddit',
             ],
             'vk' => [
-                'url' => 'http://vk.com/share.php?url=%URL%',
+                'url' => 'https://vk.com/share.php?url=%URL%',
                 'label' => 'VK',
             ],
             'blogger' => [
-                'url' => 'http://www.blogger.com/blog-this.g?n=%TITLE%&source=&b=%HTML%',
+                'url' => 'https://www.blogger.com/blog-this.g?n=%TITLE%&source=&b=%HTML%',
                 'label' => 'Blogger',
             ],
             'tumblr' => [
@@ -286,7 +286,7 @@ function get_share_links(array $share_element = [])
                 'label' => 'Tumblr.',
             ],
             'pinterest' => [
-                'url' => 'http://www.pinterest.com/pin/create/bookmarklet/?media=%IMAGE%&url=%URL%&is_video=false&description=%DESCRIPTION%&title=%TITLE%',
+                'url' => 'https://www.pinterest.com/pin/create/bookmarklet/?media=%IMAGE%&url=%URL%&is_video=false&description=%DESCRIPTION%&title=%TITLE%',
                 'label' => 'Pinterest',
             ],
         ];
@@ -353,7 +353,7 @@ function get_cookie_law_banner()
 {
     return '<div id="cookie-law-banner" data-cookie="CHV_COOKIE_LAW_DISPLAY"><div class="c24 center-box position-relative"><p class="">' . _s('We use our own and third party cookies to improve your browsing experience and our services. If you continue using our website is understood that you accept this %cookie_policy_link.', [
         '%cookie_policy_link' => '<a href="' . get_base_url('page/privacy') . '">' . _s('cookie policy') . '</a>',
-    ]) . '</p><a data-action="cookie-law-close" title="' . _s('I understand') . '" class="cookie-law-close"><span class="icon fas fa-times"></span></a></div></div>' . "\n\n";
+    ]) . '</p><a data-action="cookie-law-close" title="' . _s('I understand') . '" class="cookie-law-close"><span class="icon fas fa-close"></span></a></div></div>' . "\n\n";
 }
 // Sensitive Cookie law display
 function display_cookie_law_banner()
@@ -678,7 +678,7 @@ function replace_tpl_string(string $search, $replace, string $subject)
         $subject
     );
 }
-// http://stackoverflow.com/a/9546215
+// https://stackoverflow.com/a/9546215
 function flatten_array($array, $prefix = '')
 {
     $result = [];
@@ -1112,6 +1112,11 @@ var disqus_config = function() {
 	s.setAttribute("data-timestamp", +new Date());
 	(d.head || d.body).appendChild(s);
 })();
+document.addEventListener("paletteChanged", function (e) {
+    if (document.readyState == "complete") {
+        DISQUS.reset({ reload: true, config: disqus_config });
+    }
+});
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>', [
                 '%page_url' => Handler::var('canonical') ?? get_current_url(removeQs: ['lang'], public: true),

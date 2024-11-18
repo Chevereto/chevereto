@@ -5289,7 +5289,7 @@ a.top-user-avatar {
 
 #cookie-law-banner {
     position: fixed;
-    padding: 10px;
+    padding: 20px;
     width: 100%;
     bottom: 0;
     background: rgba(0, 0, 0, 0.8);
@@ -5299,6 +5299,7 @@ a.top-user-avatar {
 }
 
 #cookie-law-banner p {
+    font-size: 85%;
     -webkit-padding-end: 20px;
     padding-inline-end: 20px;
 }
@@ -5308,8 +5309,7 @@ a.cookie-law-close {
     text-decoration: none;
     position: absolute;
     inset-inline-end: 0;
-    top: 3px;
-    font-size: 0.72em;
+    top: 0;
     opacity: 0.5;
 }
 

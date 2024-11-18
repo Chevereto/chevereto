@@ -1,0 +1,19 @@
+Chevereto 4.2.3 (2024-11-18)
+
+- Added Bulk importer as a core feature
+- Added translation placeholder for "hosted at" titles
+- Added Akismet spam protection on tags
+- Improved install screen
+- Changed GMT references to UTC
+- Updated Polish, Portuguese, Portuguese (Brazil) and Vietnamese translations
+- Fixed bug with duplicated tags display
+- Fixed bug with missing SQL update affecting Bulk importer
+- Fixed bug with fail-safe ENV using array values
+- Fixed bug with wrong column type for image_original_exifdata
+- Fixed bug with Bulk importer not skipping missing directories
+- Fixed bug with Open Graph double encoding
+- Fixed bug with email subject extra encoding
+- Fixed bug with Disqus dark theme detection/refresh
+- Fixed bug with not working cookie law acceptance
+- Fixed bug with tag filtering using /?match=all
+- Fixed bug with PUP.js auto-close behavior

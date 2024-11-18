@@ -201,7 +201,12 @@ return function (Handler $handler) {
                 'user_username' => $user['username'] ?? null,
                 'user_email' => $user['email'] ?? null,
             ];
-            Akismet::checkImage($params['title'] ?? null, $params['description'] ?? null, $user_source_db);
+            Akismet::checkImage(
+                title: $params['title'] ?? null,
+                description: $params['description'] ?? null,
+                tags: $params['tags'] ?? null,
+                source_db: $user_source_db
+            );
         }
         $uploadToWebsite = Image::uploadToWebsite($source, $user, $params);
         $uploaded_id = intval($uploadToWebsite[0]);

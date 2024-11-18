@@ -252,7 +252,7 @@ class User
                 'Email: %email',
                 'Status: %status',
                 'IP: %registration_ip',
-                'Date (GMT): %date_gmt',
+                'Date (UTC): %date_gmt',
                 '',
                 'You can disable these notifications on %configure',
             ]);
@@ -723,7 +723,7 @@ class User
         if (isset($user['twitter_username'])) {
             $user['twitter'] = [
                 'username' => $user['twitter_username'],
-                'url' => 'http://twitter.com/' . $user['twitter_username'],
+                'url' => 'https://twitter.com/' . $user['twitter_username'],
             ];
         }
         unset($user['twitter_username']);

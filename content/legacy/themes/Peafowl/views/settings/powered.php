@@ -17,12 +17,14 @@ if (!defined('ACCESS') || !ACCESS) {
     die('This file cannot be directly accessed.');
 }
 if (env()['CHEVERETO_CONTEXT'] === 'saas') {
-    $about = _s('This service is based on Chevereto hosted edition.')
-        . ' ' . _s('Usage of this service must be in compliance with the Chevereto Software Terms of Service.');
+    $about = _s('This service is based on Chevereto cloud edition.')
+        . ' '
+        . _s('Usage of this service must be in compliance with the Chevereto Software Terms of Service.');
     $liability = _s("This instance is hosted in a service layer provided by Chevereto Software, which hereby declare not being responsible for the use of this service neither the damages that this service may cause.");
 } else {
-    $about = _s('This service is based on Chevereto self-hosted edition.')
-        . ' ' . _s('Usage of Chevereto Software must be in compliance with the software license terms known as "The Chevereto License".');
+    $about = _s('This service is based on Chevereto self-hosted %s edition.', ucfirst(env()['CHEVERETO_EDITION'] ?? ''))
+        . ' '
+        . _s('Usage of Chevereto Software must be in compliance with the software license terms known as "The Chevereto License".');
     $liability = _s("This instance is hosted in a service layer not provided by Chevereto Software, which hereby declare to do not have any control nor access to the management layer of this instance and it won't be responsible for this service neither the damages that this service may cause.");
 }
 

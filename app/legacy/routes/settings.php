@@ -347,7 +347,7 @@ return function (Handler $handler) {
                     require_once PATH_PUBLIC_LEGACY_THEME . 'mails/account-change-email.php';
                     $mail_body = ob_get_contents();
                     ob_end_clean();
-                    $mail['subject'] = _s('Confirmation required at %s', getSettings('website_name', true));
+                    $mail['subject'] = _s('Confirmation required at %s', getSettings('website_name'));
                     $mail['message'] = $mail_body;
                     send_mail($POST['email'], $mail['subject'], $mail['message']);
                     unset($POST['email']);
@@ -632,7 +632,7 @@ return function (Handler $handler) {
             ],
             [
                 'label' => '<span class="visibility-hidden">' . _s('Register date') . '</span>',
-                'content' => $handler::var('user')['date_gmt'] . ' (GMT)',
+                'content' => $handler::var('user')['date_gmt'] . ' (UTC)',
             ],
         ];
         if ($handler::var('user')['registration_ip']) {

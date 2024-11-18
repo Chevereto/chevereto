@@ -37,6 +37,7 @@ use Chevereto\Vars\PostVar;
 use Chevereto\Vars\RequestVar;
 use Chevereto\Vars\ServerVar;
 use Chevereto\Vars\SessionVar;
+use ErrorException;
 use Exception;
 use Intervention\Image\ImageManagerStatic;
 use LogicException;
@@ -49,6 +50,7 @@ use Throwable;
 use function Chevere\Filesystem\filePhpForPath;
 use function Chevere\Message\message;
 use function Chevere\Parameter\cast;
+use function Chevere\Parameter\getType;
 use function Chevere\Writer\streamFor;
 use function Chevere\Writer\writers;
 use function Chevereto\Legacy\G\absolute_to_url;
@@ -1081,7 +1083,6 @@ function loaderHandler(
       'CHEVERETO_EDITION' => 'free',
       'CHEVERETO_ENABLE_API_GUEST' => '0',
       'CHEVERETO_ENABLE_BANNERS' => '0',
-      'CHEVERETO_ENABLE_BULK_IMPORTER' => '0',
       'CHEVERETO_ENABLE_CAPTCHA' => '0',
       'CHEVERETO_ENABLE_CONSENT_SCREEN' => '0',
       'CHEVERETO_ENABLE_COOKIE_COMPLIANCE' => '0',
@@ -1168,7 +1169,21 @@ function loaderHandler(
             $envVar['CHEVERETO_XRDEBUG_HOST'] = 'host.docker.internal';
         }
     }
-    $envVar = array_map('strval', $envVar);
+    foreach ($envVar as &$envValue) {
+        if (is_string($envValue)) {
+            continue;
+        }
+
+        try {
+            $envValue = (string) $envValue;
+        } catch (ErrorException) {
+            $type = getType($envValue);
+            $envValue = match ($type) {
+                'array' => '[]',
+                default => '',
+            };
+        }
+    }
     new EnvVar($envVar);
     new ServerVar(array_merge($envDefault, $env, $_server));
     new CookieVar($_cookie);

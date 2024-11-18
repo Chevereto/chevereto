@@ -66,11 +66,11 @@ foreach ($links as $rel => $href) {
     <link rel="shortcut icon" href="<?php echo $icon;?>">
     <link rel="icon" type="image/png" href="<?php echo $icon; ?>" sizes="192x192">
     <link rel="apple-touch-icon" href="<?php echo $icon; ?>" sizes="180x180">
-    <?php if (is_route('image') && Handler::var('image') !== null && Handler::var('image')['is_360']) { ?>
+<?php if (is_route('image') && Handler::var('image') !== null && Handler::var('image')['is_360']) { ?>
     <link rel="stylesheet" href="<?php echo get_static_url(PATH_PUBLIC_CONTENT_LEGACY_THEMES_PEAFOWL_LIB . 'js/pannellum.css'); ?>">
     <script type="text/javascript" src="<?php echo get_static_url(PATH_PUBLIC_CONTENT_LEGACY_THEMES_PEAFOWL_LIB . 'js/pannellum.js'); ?>"></script>
-    <?php } ?>
-    <?php
+<?php } ?>
+<?php
     if (!Handler::cond('maintenance')) {
         require_theme_file('snippets/embed');
     }
@@ -80,11 +80,12 @@ foreach ($links as $rel => $href) {
     }
     $open_graph = [
         'type' => 'website',
-        'url' => $links['canonical'] ?? get_current_url(safe: true, removeQs: ['lang'], public: true),
+        'url' => $links['canonical']
+            ?? get_current_url(safe: true, removeQs: ['lang'], public: true),
         'title' => getSetting('website_doctitle', true),
         'image' => getSetting('homepage_cover_images')[0]['url'] ?? '',
-        'site_name' => Handler::var('safe_html_website_name'),
-        'description' => Handler::var('safe_html_meta_description'),
+        'site_name' => Handler::var('website_name'),
+        'description' => Handler::var('meta_description'),
     ];
     if (getSetting('facebook_app_id')) {
         $open_graph['fb:app_id'] = getSetting('facebook_app_id');
@@ -136,7 +137,9 @@ foreach ($links as $rel => $href) {
             $open_graph_extend = [
                 'type' => 'profile',
                 'title' => Handler::var('user')['name'],
-                'image' => isset(Handler::var('user')['avatar']) ? Handler::var('user')['avatar']['url'] : '',
+                'image' => isset(Handler::var('user')['avatar'])
+                    ? Handler::var('user')['avatar']['url']
+                    : '',
             ];
 
             break;
@@ -155,12 +158,16 @@ foreach ($links as $rel => $href) {
             continue;
         }
         $prop = strpos($k, ':') !== false ? $k : "og:$k";
-        echo '<meta property="' . $prop . '" content="' . safe_html($v, ENT_COMPAT) . '">' . "\n";
+        echo '<meta property="' . $prop . '" content="' . safe_html($v) . '">' . "\n";
     }
     $twitter_card = [
         'card' => 'summary',
         'description' => Handler::var('safe_html_meta_description'),
-        'title' => str_replace_last(' - ' . Handler::var('safe_html_website_name'), '', Handler::var('safe_html_doctitle')),
+        'title' => str_replace_last(
+            ' - ' . Handler::var('safe_html_website_name'),
+            '',
+            Handler::var('safe_html_doctitle')
+        ),
         'site' => getSetting('twitter_account') ? ('@' . getSetting('twitter_account')) : null,
     ];
     switch (true) {

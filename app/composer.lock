@@ -1512,29 +1512,29 @@
         },
         {
             "name": "chillerlan/php-qrcode",
-            "version": "4.4.1",
+            "version": "4.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/chillerlan/php-qrcode.git",
-                "reference": "f5e243f3b61a60934780579430a951460f40888d"
+                "reference": "345ed8e4ffb56e6b3fcd9f42e3970b9026fa6ce4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chillerlan/php-qrcode/zipball/f5e243f3b61a60934780579430a951460f40888d",
-                "reference": "f5e243f3b61a60934780579430a951460f40888d",
+                "url": "https://api.github.com/repos/chillerlan/php-qrcode/zipball/345ed8e4ffb56e6b3fcd9f42e3970b9026fa6ce4",
+                "reference": "345ed8e4ffb56e6b3fcd9f42e3970b9026fa6ce4",
                 "shasum": ""
             },
             "require": {
-                "chillerlan/php-settings-container": "^2.1.4 || ^3.1",
+                "chillerlan/php-settings-container": "^2.1.6 || ^3.2.1",
                 "ext-mbstring": "*",
                 "php": "^7.4 || ^8.0"
             },
             "require-dev": {
-                "phan/phan": "^5.4",
+                "phan/phan": "^5.4.5",
                 "phpmd/phpmd": "^2.15",
                 "phpunit/phpunit": "^9.6",
                 "setasign/fpdf": "^1.8.2",
-                "squizlabs/php_codesniffer": "^3.8"
+                "squizlabs/php_codesniffer": "^3.11"
             },
             "suggest": {
                 "chillerlan/php-authenticator": "Yet another Google authenticator! Also creates URIs for mobile apps.",
@@ -1577,19 +1577,15 @@
             ],
             "support": {
                 "issues": "https://github.com/chillerlan/php-qrcode/issues",
-                "source": "https://github.com/chillerlan/php-qrcode/tree/4.4.1"
+                "source": "https://github.com/chillerlan/php-qrcode/tree/4.4.2"
             },
             "funding": [
-                {
-                    "url": "https://www.paypal.com/donate?hosted_button_id=WLYUNAT9ZTJZ4",
-                    "type": "custom"
-                },
                 {
                     "url": "https://ko-fi.com/codemasher",
                     "type": "ko_fi"
                 }
             ],
-            "time": "2024-01-06T16:56:58+00:00"
+            "time": "2024-11-15T15:36:24+00:00"
         },
         {
             "name": "chillerlan/php-settings-container",
@@ -3117,21 +3113,21 @@
         },
         {
             "name": "php-ffmpeg/php-ffmpeg",
-            "version": "v1.2.0",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-FFMpeg/PHP-FFMpeg.git",
-                "reference": "785a5ba05dd88b3b8146f85f18476b259b23917c"
+                "reference": "5e7b15710a8607e8a3a2d9fbe2c150a99b924fa5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-FFMpeg/PHP-FFMpeg/zipball/785a5ba05dd88b3b8146f85f18476b259b23917c",
-                "reference": "785a5ba05dd88b3b8146f85f18476b259b23917c",
+                "url": "https://api.github.com/repos/PHP-FFMpeg/PHP-FFMpeg/zipball/5e7b15710a8607e8a3a2d9fbe2c150a99b924fa5",
+                "reference": "5e7b15710a8607e8a3a2d9fbe2c150a99b924fa5",
                 "shasum": ""
             },
             "require": {
                 "evenement/evenement": "^3.0",
-                "php": "^8.0 || ^8.1 || ^8.2 || ^8.3",
+                "php": "^8.0 || ^8.1 || ^8.2 || ^8.3 || ^8.4",
                 "psr/log": "^1.0 || ^2.0 || ^3.0",
                 "spatie/temporary-directory": "^2.0",
                 "symfony/cache": "^5.4 || ^6.0 || ^7.0",
@@ -3139,7 +3135,7 @@
             },
             "require-dev": {
                 "mockery/mockery": "^1.5",
-                "phpunit/phpunit": "^9.5.10"
+                "phpunit/phpunit": "^9.5.10 || ^10.0"
             },
             "suggest": {
                 "php-ffmpeg/extras": "A compilation of common audio & video drivers for PHP-FFMpeg"
@@ -3200,9 +3196,9 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-FFMpeg/PHP-FFMpeg/issues",
-                "source": "https://github.com/PHP-FFMpeg/PHP-FFMpeg/tree/v1.2.0"
+                "source": "https://github.com/PHP-FFMpeg/PHP-FFMpeg/tree/v1.3.0"
             },
-            "time": "2024-01-02T10:37:01+00:00"
+            "time": "2024-11-12T15:39:52+00:00"
         },
         {
             "name": "phpmailer/phpmailer",
@@ -5207,16 +5203,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v6.4.14",
+            "version": "v6.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "897c2441ed4eec8a8a2c37b943427d24dba3f26b"
+                "reference": "f1fc6f47283e27336e7cebb9e8946c8de7bff9bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/897c2441ed4eec8a8a2c37b943427d24dba3f26b",
-                "reference": "897c2441ed4eec8a8a2c37b943427d24dba3f26b",
+                "url": "https://api.github.com/repos/symfony/console/zipball/f1fc6f47283e27336e7cebb9e8946c8de7bff9bd",
+                "reference": "f1fc6f47283e27336e7cebb9e8946c8de7bff9bd",
                 "shasum": ""
             },
             "require": {
@@ -5281,7 +5277,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v6.4.14"
+                "source": "https://github.com/symfony/console/tree/v6.4.15"
             },
             "funding": [
                 {
@@ -5297,7 +5293,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-11-05T15:34:40+00:00"
+            "time": "2024-11-06T14:19:14+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -5842,16 +5838,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v6.4.14",
+            "version": "v6.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "25214adbb0996d18112548de20c281be9f27279f"
+                "reference": "3cb242f059c14ae08591c5c4087d1fe443564392"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/25214adbb0996d18112548de20c281be9f27279f",
-                "reference": "25214adbb0996d18112548de20c281be9f27279f",
+                "url": "https://api.github.com/repos/symfony/process/zipball/3cb242f059c14ae08591c5c4087d1fe443564392",
+                "reference": "3cb242f059c14ae08591c5c4087d1fe443564392",
                 "shasum": ""
             },
             "require": {
@@ -5883,7 +5879,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/process/tree/v6.4.14"
+                "source": "https://github.com/symfony/process/tree/v6.4.15"
             },
             "funding": [
                 {
@@ -5899,7 +5895,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-11-06T09:25:01+00:00"
+            "time": "2024-11-06T14:19:14+00:00"
         },
         {
             "name": "symfony/service-contracts",
@@ -5986,16 +5982,16 @@
         },
         {
             "name": "symfony/string",
-            "version": "v6.4.13",
+            "version": "v6.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "38371c60c71c72b3d64d8d76f6b1bb81a2cc3627"
+                "reference": "73a5e66ea2e1677c98d4449177c5a9cf9d8b4c6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/38371c60c71c72b3d64d8d76f6b1bb81a2cc3627",
-                "reference": "38371c60c71c72b3d64d8d76f6b1bb81a2cc3627",
+                "url": "https://api.github.com/repos/symfony/string/zipball/73a5e66ea2e1677c98d4449177c5a9cf9d8b4c6f",
+                "reference": "73a5e66ea2e1677c98d4449177c5a9cf9d8b4c6f",
                 "shasum": ""
             },
             "require": {
@@ -6052,7 +6048,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v6.4.13"
+                "source": "https://github.com/symfony/string/tree/v6.4.15"
             },
             "funding": [
                 {
@@ -6068,20 +6064,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-25T14:18:03+00:00"
+            "time": "2024-11-13T13:31:12+00:00"
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v6.4.14",
+            "version": "v6.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "93c09246038178717a9c14b809ea8151ffcf7091"
+                "reference": "38254d5a5ac2e61f2b52f9caf54e7aa3c9d36b80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/93c09246038178717a9c14b809ea8151ffcf7091",
-                "reference": "93c09246038178717a9c14b809ea8151ffcf7091",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/38254d5a5ac2e61f2b52f9caf54e7aa3c9d36b80",
+                "reference": "38254d5a5ac2e61f2b52f9caf54e7aa3c9d36b80",
                 "shasum": ""
             },
             "require": {
@@ -6137,7 +6133,7 @@
                 "dump"
             ],
             "support": {
-                "source": "https://github.com/symfony/var-dumper/tree/v6.4.14"
+                "source": "https://github.com/symfony/var-dumper/tree/v6.4.15"
             },
             "funding": [
                 {
@@ -6153,7 +6149,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-11-05T15:34:40+00:00"
+            "time": "2024-11-08T15:28:48+00:00"
         },
         {
             "name": "symfony/var-exporter",
@@ -6652,16 +6648,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.12.0",
+            "version": "1.12.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "3a6b9a42cd8f8771bd4295d13e1423fa7f3d942c"
+                "reference": "123267b2c49fbf30d78a7b2d333f6be754b94845"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/3a6b9a42cd8f8771bd4295d13e1423fa7f3d942c",
-                "reference": "3a6b9a42cd8f8771bd4295d13e1423fa7f3d942c",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/123267b2c49fbf30d78a7b2d333f6be754b94845",
+                "reference": "123267b2c49fbf30d78a7b2d333f6be754b94845",
                 "shasum": ""
             },
             "require": {
@@ -6700,7 +6696,7 @@
             ],
             "support": {
                 "issues": "https://github.com/myclabs/DeepCopy/issues",
-                "source": "https://github.com/myclabs/DeepCopy/tree/1.12.0"
+                "source": "https://github.com/myclabs/DeepCopy/tree/1.12.1"
             },
             "funding": [
                 {
@@ -6708,7 +6704,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-12T14:39:25+00:00"
+            "time": "2024-11-08T17:47:46+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -6830,16 +6826,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.12.8",
+            "version": "1.12.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "f6a60a4d66142b8156c9da923f1972657bc4748c"
+                "reference": "0d1fc20a962a91be578bcfe7cf939e6e1a2ff733"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/f6a60a4d66142b8156c9da923f1972657bc4748c",
-                "reference": "f6a60a4d66142b8156c9da923f1972657bc4748c",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/0d1fc20a962a91be578bcfe7cf939e6e1a2ff733",
+                "reference": "0d1fc20a962a91be578bcfe7cf939e6e1a2ff733",
                 "shasum": ""
             },
             "require": {
@@ -6884,7 +6880,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-11-06T19:06:49+00:00"
+            "time": "2024-11-17T14:08:01+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",

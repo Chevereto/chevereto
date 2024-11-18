@@ -160,9 +160,13 @@ return function (Handler $handler) {
     $handler::setCond('album_cover', $is_album_cover);
     $image_safe_html = safe_html($image);
     $image['alt'] = $image_safe_html['description'] ?? ($image_safe_html['title'] ?? $image_safe_html['name']);
+    $hostedAt = _s('%f hosted at %w', [
+        '%f' => $image_safe_html['name'] . '.' . $image['extension'],
+        '%w' => getSetting('website_name'),
+    ]);
     $pre_doctitle = isset($image['title'])
         ? strip_tags($image['title'])
-        : $image_safe_html['name'] . '.' . $image['extension'] . ' hosted at ' . getSetting('website_name');
+        : $hostedAt;
     $tabs = [];
     $tabs[] = [
         'icon' => 'fas fa-list-ul',
@@ -216,7 +220,7 @@ return function (Handler $handler) {
         ]);
         $image_admin_list_values = [
             [
-                'label' => _s('Image ID'),
+                'label' => _s('File ID'),
                 'content' => $image['id'] . ' (' . $image['id_encoded'] . ')',
             ],
             getIpButtonsArray($bannedIp, $image['uploader_ip']),
@@ -226,7 +230,7 @@ return function (Handler $handler) {
             ],
             [
                 'label' => '',
-                'content' => $image['date_gmt'] . ' (GMT)',
+                'content' => $image['date_gmt'] . ' (UTC)',
             ],
         ];
         $handler::setVar('content_ip', $image['uploader_ip']);

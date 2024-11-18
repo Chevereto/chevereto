@@ -175,7 +175,7 @@ return function (Handler $handler) {
                         $is_error = true;
                         $error_message = $e->getMessage();
                     } else {
-                        throw new Exception($e, $e->getCode(), $e);
+                        throw new Exception($e, (int) $e->getCode(), $e);
                     }
                 }
                 if (! $is_error) {
@@ -203,7 +203,7 @@ return function (Handler $handler) {
                         ];
                         $mail['subject'] = _s(
                             'Confirmation required at %s',
-                            getSetting('website_name', true)
+                            getSetting('website_name')
                         );
                         $mail['message'] = get_email_body_str('mails/account-confirm');
                         send_mail($POST['email'], $mail['subject'], $mail['message']);
@@ -217,7 +217,7 @@ return function (Handler $handler) {
                             $theme_mail = [
                                 'user' => $logged_user,
                             ];
-                            $mail['subject'] = _s('Welcome to %s', getSetting('website_name', true));
+                            $mail['subject'] = _s('Welcome to %s', getSetting('website_name'));
                             $mail['message'] = get_email_body_str('mails/account-welcome');
                             send_mail($logged_user['email'], $mail['subject'], $mail['message']);
                         } catch (Exception) {

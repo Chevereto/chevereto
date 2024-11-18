@@ -20,7 +20,7 @@ CREATE TABLE `%table_prefix%images` (
   `image_md5` varchar(32) NOT NULL,
   `image_source_md5` varchar(32) DEFAULT NULL,
   `image_original_filename` varchar(255) NOT NULL,
-  `image_original_exifdata` text,
+  `image_original_exifdata` mediumtext,
   `image_views` bigint(32) NOT NULL DEFAULT '0',
   `image_category_id` bigint(32) DEFAULT NULL,
   `image_chain` tinyint(3) NOT NULL,

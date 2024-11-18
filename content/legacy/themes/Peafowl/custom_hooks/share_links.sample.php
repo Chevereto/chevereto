@@ -16,7 +16,7 @@ $share_links_networks = [
         'label' => 'Email'
     ],
     'facebook' => [
-        'url' => 'http://www.facebook.com/share.php?u=%URL%',
+        'url' => 'https://www.facebook.com/share.php?u=%URL%',
         'label' => 'Facebook'
     ],
     'twitter' => [
@@ -24,7 +24,7 @@ $share_links_networks = [
         'label' => 'X'
     ],
     'blogger' => [
-        'url' => 'http://www.blogger.com/blog-this.g?n=%TITLE%&source=&b=%HTML%',
+        'url' => 'https://www.blogger.com/blog-this.g?n=%TITLE%&source=&b=%HTML%',
         'label' => 'Blogger'
     ],
     'tumblr' => [
@@ -32,15 +32,15 @@ $share_links_networks = [
         'label' => 'Tumblr.'
     ],
     'pinterest' => [
-        'url' => 'http://www.pinterest.com/pin/create/bookmarklet/?media=%IMAGE%&url=%URL%&is_video=false&description=%DESCRIPTION%&title=%TITLE%',
+        'url' => 'https://www.pinterest.com/pin/create/bookmarklet/?media=%IMAGE%&url=%URL%&is_video=false&description=%DESCRIPTION%&title=%TITLE%',
         'label' => 'Pinterest'
     ],
     'reddit' => [
-        'url' => 'http://old.reddit.com/submit?type=link&url=%URL%&title=%TITLE%&text=%DESCRIPTION%',
+        'url' => 'https://old.reddit.com/submit?type=link&url=%URL%&title=%TITLE%&text=%DESCRIPTION%',
         'label' => 'reddit'
     ],
     'vk' => [
-        'url' => 'http://vk.com/share.php?url=%URL%',
+        'url' => 'https://vk.com/share.php?url=%URL%',
         'label' => 'VK'
     ]
 ];

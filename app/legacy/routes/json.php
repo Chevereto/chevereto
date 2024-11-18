@@ -136,9 +136,10 @@ return function (Handler $handler) {
                 }
                 if (! $handler::cond('content_manager') && getSetting('akismet')) {
                     Akismet::checkImage(
-                        $REQUEST['title'] ?? null,
-                        $REQUEST['description'] ?? null,
-                        $logged_user_source_db
+                        title: $REQUEST['title'] ?? null,
+                        description: $REQUEST['description'] ?? null,
+                        tags: $REQUEST['tags'] ?? null,
+                        source_db: $logged_user_source_db
                     );
                 }
                 $uploadToWebsite = Image::uploadToWebsite($source, $logged_user, $REQUEST);
@@ -553,7 +554,12 @@ return function (Handler $handler) {
                         if (! $handler::cond('content_manager')
                             && getSetting('akismet')
                         ) {
-                            Akismet::checkImage($editing['title'], $editing['description'], $source_image_db);
+                            Akismet::checkImage(
+                                title: $editing['title'] ?? null,
+                                description: $editing['description'] ?? null,
+                                tags: $editing['tags'] ?? null,
+                                source_db: $source_image_db
+                            );
                         }
                         Image::update($id, $editing);
                         $image_edit_db = Image::getSingle($id);
@@ -1459,7 +1465,7 @@ return function (Handler $handler) {
                     throw new Exception('Invalid request', 403);
                 }
                 $send_email = send_mail($REQUEST['email'], _s('Test email from %s @ %t', [
-                    '%s' => getSetting('website_name', true),
+                    '%s' => getSetting('website_name'),
                     '%t' => datetime(),
                 ]), '<p>' . _s('This is just a test') . '</p>');
                 if ($send_email) {
