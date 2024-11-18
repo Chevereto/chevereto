@@ -84,6 +84,7 @@ jobs:
           rm -rf README.md chevereto.svg rector.php
           rm -rf app/tests app/phpunit*.xml
           rm -rf app/.editions app/bin/edition
+          mkdir images/_assets
           mkdir importing/{parse-users,parse-albums,no-parse}
           mv .package ..
           ls -la ../.package
