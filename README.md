@@ -64,7 +64,7 @@ Chevereto [Documentation](https://v4-docs.chevereto.com) covers the system requi
 
 This is a short, not exhaustive, list of features available on Chevereto editions. Feel free to request a demo of the pro edition at [chevereto.com](https://chevereto.com) (free of any charge, no payment required) to see all the features in action.
 
-## Files supported
+### Files supported
 
 Upload and share the following media types from device file browser, drag and drop, on-the-fly device camera, clipboard, URL, ShareX and via API.
 
