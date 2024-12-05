@@ -31,7 +31,7 @@ foreach (StorageApis::getEnabled() as $k => $v) {
 		</select>
 	</div>
 <?php if(!(bool) env()['CHEVERETO_ENABLE_EXTERNAL_STORAGE_PROVIDERS']) { ?>
-	<div class="input-below">(*) <?php _se('Not available in %s.', 'Chevereto ' . (string) env()['CHEVERETO_EDITION']); ?></div>
+	<div class="input-below">(*) <?php _se('Not available in %s edition.', '<b>Chevereto ' . ucfirst((string) env()['CHEVERETO_EDITION']) . '</b>'); ?></div>
 <?php } ?>
 	<div class="input-below input-warning red-warning"><?php echo Handler::var('input_errors')['form-storage-api_id'] ?? ''; ?></div>
 </div>
@@ -192,7 +192,7 @@ foreach (StorageApis::getEnabled() as $k => $v) {
 	</div>
 	<div class="input-label">
 		<label for="form-storage-url">URL</label>
-		<input type="text" id="form-storage-url" name="form-storage-url" class="text-input" placeholder="<?php _se('Storage URL'); ?>" value="<?php echo Storage::getAPIRegions('s3')['us-east-1']['url']; ?>" required>
+		<input type="text" id="form-storage-url" name="form-storage-url" class="text-input" placeholder="<?php _se('Storage URL'); ?>" required>
 		<div class="input-below"><?php _se('Map files in this storage under this URL.'); ?></div>
 	</div>
 	<div class="input-label">

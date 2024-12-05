@@ -20,12 +20,13 @@ function storeDownloadedUrl(string $url, string $filepath)
 {
     $clientArgs = [
         'base_uri' => $url,
-        'timeout' => $_ENV['CHEVERETO_HTTP_TIMEOUT'] ?? 30,
+        // 'timeout' => $_ENV['CHEVERETO_HTTP_TIMEOUT'] ?? 30,
     ];
+
     // @codeCoverageIgnoreStart
-    if (isset($_ENV['CHEVERETO_HTTP_PROXY'])) {
-        $clientArgs['proxy'] = $_ENV['CHEVERETO_HTTP_PROXY'];
-    }
+    // if (isset($_ENV['CHEVERETO_HTTP_PROXY'])) {
+    //     $clientArgs['proxy'] = $_ENV['CHEVERETO_HTTP_PROXY'];
+    // }
     // @codeCoverageIgnoreEnd
     try {
         $httpClient = new Client($clientArgs);

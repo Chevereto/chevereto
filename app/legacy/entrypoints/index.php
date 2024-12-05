@@ -10,6 +10,7 @@
  */
 
 use function Chevereto\Legacy\G\sanitize_path_slashes;
+use function Chevereto\Legacy\getCheveretoEnv;
 use function Chevereto\Legacy\loaderHandler;
 
 define('ACCESS', 'web');
@@ -35,7 +36,7 @@ if (in_array($urlPath, ['/upgrading', '/upgrading/'], true)
 }
 require_once loaderHandler(
     $_COOKIE,
-    $_ENV,
+    getCheveretoEnv(),
     $_FILES,
     $_GET,
     $_POST,

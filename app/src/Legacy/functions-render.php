@@ -26,10 +26,8 @@ use function Chevereto\Legacy\G\array_filter_array;
 use function Chevereto\Legacy\G\check_value;
 use function Chevereto\Legacy\G\dsq_hmacsha1;
 use function Chevereto\Legacy\G\get_base_url;
-use function Chevereto\Legacy\G\get_current_url;
 use function Chevereto\Legacy\G\get_public_url;
 use function Chevereto\Legacy\G\get_route_name;
-use function Chevereto\Legacy\G\get_route_path;
 use function Chevereto\Legacy\G\get_set_status_header_desc;
 use function Chevereto\Legacy\G\json_document_output;
 use function Chevereto\Legacy\G\json_prepare;
@@ -37,7 +35,6 @@ use function Chevereto\Legacy\G\require_theme_file;
 use function Chevereto\Legacy\G\safe_html;
 use function Chevereto\Legacy\G\sanitize_path_slashes;
 use function Chevereto\Legacy\G\set_status_header;
-use function Chevereto\Legacy\G\str_replace_first;
 use function Chevereto\Legacy\G\url_to_relative;
 use function Chevereto\Vars\cookie;
 use function Chevereto\Vars\env;
@@ -1069,8 +1066,11 @@ function show_banner($banner, $sfw = true)
         echo '<div id="' . $banner . '" class="ad-banner">' . $banner_code . '</div>';
     }
 }
-function getComments(): string
-{
+function getComments(
+    string $url,
+    string $id,
+    ?string $title = null
+): string {
     $html = '';
     switch (getSetting('comments_api')) {
         case 'js':
@@ -1097,18 +1097,18 @@ function getComments(): string
                 $hmac = dsq_hmacsha1($message . ' ' . $timestamp, $disqus_secret);
                 $auth = $message . ' ' . $hmac . ' ' . $timestamp;
             }
-            $html = strtr('<div id="disqus_thread"></div>
+            $template = '<div id="disqus_thread"></div>
 <script>
 var disqus_config = function() {
-	this.page.url = "%page_url";
-	this.page.identifier = "%page_id";
-    this.language = "%language_code";
-	this.page.remote_auth_s3 = "%auth";
-	this.page.api_key = "%api_key";
+	this.page.url = "{{ PAGE_URL }}";
+	this.page.identifier = "{{ PAGE_ID }}";
+    this.language = "{{ LANGUAGE_CODE }}";
+	this.page.remote_auth_s3 = "%auth%";
+	this.page.api_key = "%api_key%";
 };
 (function() {
 	var d = document, s = d.createElement("script");
-	s.src = "//%shortname.disqus.com/embed.js";
+	s.src = "//%shortname%.disqus.com/embed.js";
 	s.setAttribute("data-timestamp", +new Date());
 	(d.head || d.body).appendChild(s);
 })();
@@ -1118,19 +1118,22 @@ document.addEventListener("paletteChanged", function (e) {
     }
 });
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>', [
-                '%page_url' => Handler::var('canonical') ?? get_current_url(removeQs: ['lang'], public: true),
-                '%page_id' => str_replace_first(get_route_path(), get_route_name(), get_route_path(true)), // image.ID
-                '%shortname' => getSetting('disqus_shortname'),
-                '%language_code' => get_language_used()['base'],
-                '%auth' => $auth ?? null,
-                '%api_key' => $disqus_public,
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>';
+            $html = strtr($template, [
+                '%shortname%' => getSetting('disqus_shortname'),
+                '%auth%' => $auth ?? null,
+                '%api_key%' => $disqus_public,
             ]);
 
             break;
     }
 
-    return $html;
+    return strtr($html, [
+        '{{ PAGE_URL }}' => $url,
+        '{{ PAGE_ID }}' => $id,
+        '{{ PAGE_TITLE }}' => $title ?? '',
+        '{{ LANGUAGE_CODE }}' => get_language_used()['base'],
+    ]);
 }
 
 function getThemeLogo(): string
@@ -1149,9 +1152,6 @@ function getThemeLogo(): string
 
 function badgePaid(string $edition): string
 {
-    if ($edition === 'lite') {
-        $edition = 'pro';
-    }
     if (! (bool) env()['CHEVERETO_ENABLE_EXPOSE_PAID_FEATURES']) {
         return '';
     }
@@ -1164,9 +1164,6 @@ function badgePaid(string $edition): string
 
 function linkPaid(string $edition): ?string
 {
-    if ($edition === 'lite') {
-        $edition = 'pro';
-    }
     if (! (bool) env()['CHEVERETO_ENABLE_EXPOSE_PAID_FEATURES']) {
         return null;
     }
@@ -1179,9 +1176,6 @@ function linkPaid(string $edition): ?string
 
 function inputDisabledPaid(string $edition): string
 {
-    if ($edition === 'lite') {
-        $edition = 'pro';
-    }
     if (in_array($edition, editionCombo()[env()['CHEVERETO_EDITION']], true)) {
         return '';
     }

@@ -154,8 +154,8 @@ foreach ($regions ?? [] as $key => $region) {
 <?php } ?>
 <hr class="line-separator">
 <div class="input-label">
-    <?php echo badgePaid('pro'); ?><label for="enable_likes"><?php _se('Likes'); ?></label>
-    <div class="c5 phablet-c1"><select <?php echo inputDisabledPaid('pro'); ?> type="text" name="enable_likes" id="enable_likes" class="text-input" <?php if (getSetting('website_mode') == 'personal') {
+    <?php echo badgePaid('lite'); ?><label for="enable_likes"><?php _se('Likes'); ?></label>
+    <div class="c5 phablet-c1"><select <?php echo inputDisabledPaid('lite'); ?> type="text" name="enable_likes" id="enable_likes" class="text-input" <?php if (getSetting('website_mode') == 'personal') {
                 echo ' disabled';
             } ?>>
             <?php
@@ -165,8 +165,8 @@ foreach ($regions ?? [] as $key => $region) {
     <?php personal_mode_warning(); ?>
 </div>
 <div class="input-label">
-    <?php echo badgePaid('pro'); ?><label for="enable_followers"><?php _se('Followers'); ?></label>
-    <div class="c5 phablet-c1"><select <?php echo inputDisabledPaid('pro'); ?> type="text" name="enable_followers" id="enable_followers" class="text-input" <?php if (getSetting('website_mode') == 'personal') {
+    <?php echo badgePaid('lite'); ?><label for="enable_followers"><?php _se('Followers'); ?></label>
+    <div class="c5 phablet-c1"><select <?php echo inputDisabledPaid('lite'); ?> type="text" name="enable_followers" id="enable_followers" class="text-input" <?php if (getSetting('website_mode') == 'personal') {
                 echo ' disabled';
             } ?>>
             <?php

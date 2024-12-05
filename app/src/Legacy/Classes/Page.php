@@ -50,7 +50,7 @@ class Page
         return [];
     }
 
-    public static function get(array $values, array $sort = [], int $limit = null): array
+    public static function get(array $values, array $sort = [], ?int $limit = null): array
     {
         return [];
     }

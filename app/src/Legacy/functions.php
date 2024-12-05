@@ -939,7 +939,7 @@ function upload_to_content_images(array $source, string $what): void
     }
 }
 
-function isSafeToExecute(int $max_execution_time = null, array $options = []): bool
+function isSafeToExecute(?int $max_execution_time = null, array $options = []): bool
 {
     if ($max_execution_time === null) {
         $max_execution_time = (int) ini_get('max_execution_time');
@@ -1017,6 +1017,15 @@ function isShowEmbedContent(): bool
     };
 }
 
+function getCheveretoEnv(): array
+{
+    $env = getenv();
+
+    return array_filter($env, function ($key) {
+        return strpos($key, 'CHEVERETO_') === 0;
+    }, ARRAY_FILTER_USE_KEY);
+}
+
 /**
  * Process the server context and returns the handler file to load.
  */
@@ -1050,6 +1059,7 @@ function loaderHandler(
     define('PATH_APP_LEGACY_ROUTES_OVERRIDES', PATH_APP_LEGACY_ROUTES . 'overrides/');
     define('PATH_APP_COMPONENTS_LEGACY', PATH_PUBLIC . 'app/src/Components/Legacy/');
     define('PATH_APP', PATH_PUBLIC . 'app/');
+    define('PATH_APP_LICENSE_KEY', PATH_APP . 'CHEVERETO_LICENSE_KEY.php');
     define('PATH_APP_LEGACY_INSTALL', PATH_APP_LEGACY . 'install/');
     define('PATH_APP_CONTENT', PATH_APP . 'content/');
     define('PATH_APP_LANGUAGES', PATH_APP . 'languages/');
@@ -1127,7 +1137,13 @@ function loaderHandler(
         'session.save_path' => 'CHEVERETO_SESSION_SAVE_PATH',
         // 'upload_max_filesize' => 'CHEVERETO_MAX_UPLOAD_SIZE', // INI_PERDIR
     ];
+    $iniToSkip = [
+        'max_execution_time' => PHP_SAPI === 'cli',
+    ];
     foreach ($iniToChevereto as $iniOption => $envName) {
+        if (($iniToSkip[$iniOption] ?? false) === true) {
+            continue;
+        }
         if (! function_exists('ini_get')
             || ! function_exists('ini_set')
         ) {
@@ -1169,19 +1185,17 @@ function loaderHandler(
             $envVar['CHEVERETO_XRDEBUG_HOST'] = 'host.docker.internal';
         }
     }
-    foreach ($envVar as &$envValue) {
-        if (is_string($envValue)) {
-            continue;
-        }
-
-        try {
-            $envValue = (string) $envValue;
-        } catch (ErrorException) {
-            $type = getType($envValue);
-            $envValue = match ($type) {
-                'array' => '[]',
-                default => '',
-            };
+    foreach ($envVar as $envName => &$envValue) {
+        if (! is_string($envValue)) {
+            try {
+                $envValue = (string) $envValue;
+            } catch (ErrorException) {
+                $type = getType($envValue);
+                $envValue = match ($type) {
+                    'array' => '[]',
+                    default => '',
+                };
+            }
         }
     }
     new EnvVar($envVar);
@@ -1425,8 +1439,13 @@ function feedbackStep(string $doing, string $target)
 
 function isDebug(): bool
 {
+    $environment = getenv('CHEVERETO_ENVIRONMENT');
+    $debugLevel = $environment === false
+        ? ''
+        : $environment;
+
     try {
-        return ($_ENV['CHEVERETO_ENVIRONMENT'] ?? '') === 'dev'
+        return $debugLevel === 'dev'
             || (getSetting('debug_errors') && Login::isAdmin());
     } catch (Throwable) {
         return false;
@@ -1507,9 +1526,9 @@ function adjustBrightness(string $hexCode, float $adjustPercent)
 function getLicenseKey(): string
 {
     $licenseKey = env()['CHEVERETO_LICENSE_KEY'] ?? '';
-    $licenseFile = PATH_APP . 'CHEVERETO_LICENSE_KEY';
-    if ($licenseKey === '' && file_exists($licenseFile)) {
-        $licenseKey = file_get_contents($licenseFile);
+    if ($licenseKey === '' && file_exists(PATH_APP_LICENSE_KEY)) {
+        /** @var string $licenseKey */
+        $licenseKey = require PATH_APP_LICENSE_KEY;
     }
 
     return $licenseKey;

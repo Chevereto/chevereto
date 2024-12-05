@@ -9,6 +9,7 @@
  * file that was distributed with this source code.
  */
 
+use function Chevereto\Legacy\getCheveretoEnv;
 use function Chevereto\Legacy\loaderHandler;
 
 class CustomTinkerwellDriver extends TinkerwellDriver
@@ -25,7 +26,7 @@ class CustomTinkerwellDriver extends TinkerwellDriver
         require $projectPath . '/app/legacy/load/loader.php';
         include loaderHandler(
             _cookie: [],
-            _env: $_ENV,
+            _env: getCheveretoEnv(),
             _files: [],
             _get: [],
             _post: [],

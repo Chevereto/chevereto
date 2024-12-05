@@ -1799,7 +1799,7 @@ return function (Handler $handler) {
                 if (! Login::isAdmin()) {
                     throw new Exception(_s('Request denied'), 403);
                 }
-                $licenseKey = $POST['key'] ?? '';
+                $licenseKey = trim($POST['key'] ?? '');
                 if ($licenseKey !== '') {
                     $check = fetch_url(
                         url: 'https://chevereto.com/api/license/check',
@@ -1822,7 +1822,7 @@ return function (Handler $handler) {
                     if (version_compare($checkVersion, '4', '>=') === false) {
                         throw new Exception(
                             _s(
-                                'Chevereto V%s license key used, required V%r or greater license key',
+                                'Chevereto V%s license key detected. A Chevereto V%r license key is required.',
                                 [
                                     '%s' => $checkVersion,
                                     '%r' => '4',
@@ -1832,9 +1832,9 @@ return function (Handler $handler) {
                         );
                     }
                 }
-                $licenseFile = PATH_APP . 'CHEVERETO_LICENSE_KEY';
-                touch($licenseFile);
-                if (file_put_contents($licenseFile, $licenseKey) !== false) {
+                touch(PATH_APP_LICENSE_KEY);
+                $licenseContents = "<?php return '{$licenseKey}';";
+                if (file_put_contents(PATH_APP_LICENSE_KEY, $licenseContents) !== false) {
                     $json_array['status_code'] = 200;
                     $licenseAction = $licenseKey === ''
                         ? _s('License key removed')

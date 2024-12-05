@@ -292,7 +292,7 @@ class Handler
         );
     }
 
-    public function mapRoute(string $route_name, array $args = null): callable
+    public function mapRoute(string $route_name, ?array $args = null): callable
     {
         $this->template = $route_name;
         self::$base_request = $route_name;
@@ -477,7 +477,7 @@ class Handler
         return (bool) preg_match('{index\.php$}', ltrim($this->script_name, '/'));
     }
 
-    private function loadTemplate(string $template = null): void
+    private function loadTemplate(?string $template = null): void
     {
         if ($template !== null) {
             $this->template = $template;

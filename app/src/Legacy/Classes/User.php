@@ -738,7 +738,7 @@ class User
         return preg_replace('#<|>#', '', $name);
     }
 
-    public static function cleanUnconfirmed(int $limit = null): void
+    public static function cleanUnconfirmed(?int $limit = null): void
     {
         $db = DB::getInstance();
         $query = 'SELECT * FROM ' . DB::getTable('users') . ' WHERE user_status IN ("awaiting-confirmation", "awaiting-email") AND user_date_gmt <= DATE_SUB(UTC_TIMESTAMP(), INTERVAL 2 DAY) ORDER BY user_id DESC';

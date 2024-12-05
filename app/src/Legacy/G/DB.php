@@ -84,10 +84,7 @@ class DB
     {
         if (! isset(self::$instance)) {
             throw new LogicException(
-                message(
-                    'No `%type%` initialized',
-                    s: static::class
-                )
+                message('No `%type%` initialized', type: static::class)
             );
         }
 
@@ -119,7 +116,7 @@ class DB
         return self::$dbh->errorInfo();
     }
 
-    public function bind(mixed $param, mixed $value, int $type = null): void
+    public function bind(mixed $param, mixed $value, ?int $type = null): void
     {
         if ($type === null) {
             switch (true) {
@@ -262,7 +259,7 @@ class DB
         array|string $where,
         string $clause = 'AND',
         array $sort = [],
-        int $limit = null,
+        ?int $limit = null,
         int $fetch_style = PDO::FETCH_ASSOC,
         array $valuesOperators = []
     ): mixed {

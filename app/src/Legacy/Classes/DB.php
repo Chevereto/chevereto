@@ -92,7 +92,7 @@ class DB extends GDB
         array|string $where,
         string $clause = 'AND',
         array $sort = [],
-        int $limit = null,
+        ?int $limit = null,
         int $fetch_style = PDO::FETCH_ASSOC,
         array $valuesOperators = []
     ): mixed {

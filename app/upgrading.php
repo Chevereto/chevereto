@@ -10,25 +10,22 @@
  */
 
 /*
-
 Download (auto license):
     php app/upgrading.php
-
+-
 Download (with license):
     CHEVERETO_LICENSE_KEY=your_license_key php app/upgrading.php
-
-* .upgrading/upgrading.lock
-This setting affects non CLI (HTTP calls only).
-It exists when the upgrade has been authorized at dashboard.
+-
+.upgrading/upgrading.lock
 It contains the token for upgrade process, must be checked against request.
-
-* .upgrading/downloading.lock
+-
+.upgrading/downloading.lock
 It exists when the upgrade is downloading the new version.
-
-* .upgrading/extracting.lock
+-
+.upgrading/extracting.lock
 It exists when the upgrade is extracting the new version.
+ */
 
-*/
 namespace Chevereto;
 
 use Exception;
@@ -36,14 +33,14 @@ use RuntimeException;
 use stdClass;
 use Throwable;
 use ZipArchive;
-
 use function Chevere\Filesystem\directoryForPath;
+use function Chevereto\Legacy\getCheveretoEnv;
 
 require_once __DIR__ . '/legacy/load/php-boot.php';
 
 const ZIP_BALL = 'https://chevereto.com/api/download/%tag%';
 const LOGGER = __DIR__ . '/.upgrading/process.log';
-if (!file_exists(LOGGER)) {
+if (! file_exists(LOGGER)) {
     $loggerDir = dirname(LOGGER);
     directoryForPath($loggerDir)->createIfNotExists();
     touch(LOGGER);
@@ -68,7 +65,14 @@ $logProcess = $workingDir . '/process.log';
 $lockUpgrading = $workingDir . '/upgrading.lock';
 $lockDownloading = $workingDir . '/downloading.lock';
 $lockExtracting = $workingDir . '/extracting.lock';
-$upgradingKey = $rootDir . '/app/CHEVERETO_LICENSE_KEY';
+$FileKeyLegacy = $rootDir . '/app/CHEVERETO_LICENSE_KEY';
+$fileKey = $rootDir . '/app/CHEVERETO_LICENSE_KEY.php';
+if (file_exists($FileKeyLegacy)) {
+    $licenseKeyLegacy = file_get_contents($FileKeyLegacy);
+    $licenseKeyLegacy = trim($licenseKeyLegacy);
+    file_put_contents($fileKey, "<?php return '{$licenseKeyLegacy}';");
+    unlink($FileKeyLegacy);
+}
 if (PHP_SAPI !== 'cli') {
     header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
     echo <<<HTML
@@ -79,10 +83,10 @@ if (PHP_SAPI !== 'cli') {
     </script></head><body><pre>
     HTML;
 }
-if (!is_dir($workingDir)) {
+if (! is_dir($workingDir)) {
     mkdir($workingDir, 0755, true);
 }
-if (!is_writable($workingDir)) {
+if (! is_writable($workingDir)) {
     abort('[!] Working dir is not writable', 500);
 }
 $envFile = __DIR__ . '/env.php';
@@ -90,16 +94,16 @@ $env = [];
 if (file_exists($envFile)) {
     $env = require $envFile;
 }
-$env = array_merge($_ENV, $_SERVER, $env);
+$env = array_merge(getCheveretoEnv(), $_SERVER, $env);
 if (($env['CHEVERETO_SERVICING'] ?? null) === 'docker') {
     abort('[!] This feature is not available when using Docker', 403);
 }
-if (!class_exists('ZipArchive')) {
+if (! class_exists('ZipArchive')) {
     abort('[!] ZipArchive is not available');
 }
 $licenseKey = $env['CHEVERETO_LICENSE_KEY'] ?? '';
-if ($licenseKey === '' && file_exists($upgradingKey)) {
-    $licenseKey = file_get_contents($upgradingKey);
+if ($licenseKey === '' && file_exists($fileKey)) {
+    $licenseKey = require $fileKey;
 }
 $return = $_GET['return'] ?? '';
 $parseUri = parse_url($_SERVER['REQUEST_URI'] ?? '');
@@ -124,26 +128,26 @@ if (PHP_SAPI === 'cli') {
         unlinkIfExists($lockDownloading);
         unlinkIfExists($lockExtracting);
         logger('Locks cleared');
-        die(0);
+        exit(0);
     }
 } else {
     $singleStep = false;
     $action = (string) ($_GET['action'] ?? '');
     $token = (string) ($_GET['token'] ?? '');
-    if (!file_exists($lockUpgrading)) {
+    if (! file_exists($lockUpgrading)) {
         abort('[!] Upgrade is not expected', 403);
     }
     $upgradeToken = file_get_contents($lockUpgrading);
     if ($upgradeToken === false) {
         abort('[!] Invalid token file', 403);
     }
-    if (!hash_equals($upgradeToken, $token)) {
+    if (! hash_equals($upgradeToken, $token)) {
         abort('[!] Invalid token', 403);
     }
     if (($env['CHEVERETO_CONTEXT'] ?? null) === 'saas') {
         abort('[!] Upgrade is not needed on SaaS context', 403);
     }
-    if (!in_array($action, $actions, true)) {
+    if (! in_array($action, $actions, true)) {
         abort('[!] Provide action=download or action=extract', 400);
     }
 }
@@ -187,7 +191,7 @@ if ($singleStep || $action === 'extract') {
     if (file_exists($lockExtracting)) {
         abort('[!] Extracting is already in progress', 400);
     }
-    if (!file_exists($filePath)) {
+    if (! file_exists($filePath)) {
         abort('[!] Package not downloaded', 400);
     }
     logger('Lock extracting process');
@@ -258,7 +262,7 @@ function curl(string $url, array $curlOpts = []): object
     curl_setopt($ch, CURLOPT_USERAGENT, 'Chevereto Upgrade');
     $fp = false;
     foreach ($curlOpts as $k => $v) {
-        if (CURLOPT_FILE == $k) {
+        if ($k == CURLOPT_FILE) {
             $fp = $v;
         }
         curl_setopt($ch, $k, $v);
@@ -279,7 +283,7 @@ function curl(string $url, array $curlOpts = []): object
     } else {
         $return->raw = $file_get_contents;
     }
-    if (false !== strpos($transfer['content_type'], 'application/json')) {
+    if (strpos($transfer['content_type'], 'application/json') !== false) {
         $return->json = json_decode($return->raw);
         if (is_resource($fp)) {
             $meta_data = stream_get_meta_data($fp);
@@ -287,7 +291,7 @@ function curl(string $url, array $curlOpts = []): object
         }
     }
     $code = $transfer['http_code'];
-    if (200 != $code && !isset($return->json)) {
+    if ($code != 200 && ! isset($return->json)) {
         $return->json = new stdClass();
         $return->json->error = new stdClass();
         $return->json->error->message = 'Error performing HTTP request';
@@ -300,11 +304,11 @@ function curl(string $url, array $curlOpts = []): object
 
 function getFormatBytes($bytes, int $round = 1): string
 {
-    if (!is_numeric($bytes)) {
+    if (! is_numeric($bytes)) {
         return (string) $bytes;
     }
     if ($bytes < 1000) {
-        return "$bytes B";
+        return "{$bytes} B";
     }
     $units = ['KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
     foreach ($units as $k => $v) {
@@ -313,7 +317,7 @@ function getFormatBytes($bytes, int $round = 1): string
         if ($bytes < $threshold) {
             $size = round($bytes / $multiplier, $round);
 
-            return "$size $v";
+            return "{$size} {$v}";
         }
     }
 }
@@ -331,7 +335,7 @@ function getBytesToMb($bytes, int $round = 2): float
 function downloadFile(string $url, array $params, string $filePath, bool $post = true): object
 {
     $fp = fopen($filePath, 'wb+');
-    if (!$fp) {
+    if (! $fp) {
         throw new Exception("Can't open temp file " . $filePath . ' (wb+)');
     }
     $ops = [
@@ -389,13 +393,13 @@ function downloadAction(string $workingDir, array $params): Response
 
 function extractAction(string $pathTo, string $filePath): Response
 {
-    if (!file_exists($pathTo) && !mkdir($pathTo)) {
+    if (! file_exists($pathTo) && ! mkdir($pathTo)) {
         throw new Exception(sprintf("Working path %s doesn't exists and can't be created", $pathTo), 500);
     }
-    if (!is_readable($pathTo)) {
+    if (! is_readable($pathTo)) {
         throw new Exception(sprintf('Working path %s is not readable', $pathTo), 500);
     }
-    if (!is_readable($filePath)) {
+    if (! is_readable($filePath)) {
         throw new Exception(sprintf("Can't read %s", basename($filePath)), 500);
     }
     $zip = new ZipArchive();
@@ -410,15 +414,18 @@ function extractAction(string $pathTo, string $filePath): Response
     }
     $numFiles = $zip->numFiles - 1;
     $extraction = $zip->extractTo($pathTo);
-    if (!$extraction) {
-        throw new Exception("Unable to extract to");
+    if (! $extraction) {
+        throw new Exception('Unable to extract to');
     }
     $zip->close();
     $timeTaken = round(microtime(true) - $timeStart, 2); //
     clearstatcache(true, $pathTo);
 
     return new Response(
-        strtr('Extraction completed for %n files in %ss', ['%n' => $numFiles, '%s' => $timeTaken]),
+        strtr('Extraction completed for %n files in %ss', [
+            '%n' => $numFiles,
+            '%s' => $timeTaken,
+        ]),
         [
             'numFiles' => $numFiles,
             'timeTaken' => $timeTaken,
@@ -429,22 +436,22 @@ function extractAction(string $pathTo, string $filePath): Response
 function abort(string $message)
 {
     logger('[ERROR] ' . $message);
-    die(255);
+    exit(255);
 }
 
 function passthruEnabled(): bool
 {
-    if (!function_exists('passthru')) {
+    if (! function_exists('passthru')) {
         return false;
     }
     $disabled = explode(',', ini_get('disable_functions'));
 
-    return !in_array('passthru', $disabled);
+    return ! in_array('passthru', $disabled);
 }
 
 function unlinkIfExists(string $file): void
 {
-    if (!file_exists($file)) {
+    if (! file_exists($file)) {
         return;
     }
     unlink($file);

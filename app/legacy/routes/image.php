@@ -19,6 +19,8 @@ use function Chevereto\Legacy\encodeID;
 use function Chevereto\Legacy\flatten_array;
 use function Chevereto\Legacy\G\get_current_url;
 use function Chevereto\Legacy\G\get_global;
+use function Chevereto\Legacy\G\get_route_name;
+use function Chevereto\Legacy\G\get_route_path;
 use function Chevereto\Legacy\G\redirect;
 use function Chevereto\Legacy\G\require_theme_file;
 use function Chevereto\Legacy\G\safe_html;
@@ -175,7 +177,13 @@ return function (Handler $handler) {
         'current' => true,
         'url' => '#about',
     ];
-    $comments = getComments();
+    $commentsArgs = [
+        'url' => $image['url_short'],
+        'id' => $image['type'] . ':' . $image['id_encoded'],
+        'title' => $image['title_truncated_html'],
+    ];
+    // $commentsArgs['id'] = str_replace_first(get_route_path(), get_route_name(), get_route_path(true)); // Legacy fix
+    $comments = getComments(...$commentsArgs);
     if ($comments !== '') {
         $tabs[] = [
             'icon' => 'fas fa-comments',

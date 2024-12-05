@@ -9,6 +9,7 @@
  * file that was distributed with this source code.
  */
 
+use function Chevereto\Legacy\getCheveretoEnv;
 use function Chevereto\Legacy\loaderHandler;
 
 if (PHP_SAPI !== 'cli') {
@@ -46,7 +47,7 @@ define('ACCESS', $access);
 require_once __DIR__ . '/../load/php-boot.php';
 require_once loaderHandler(
     $_COOKIE,
-    $_ENV,
+    getCheveretoEnv(),
     $_FILES,
     $_GET,
     $_POST,

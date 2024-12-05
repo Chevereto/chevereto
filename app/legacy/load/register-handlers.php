@@ -85,7 +85,10 @@ set_exception_handler(function (Throwable $throwable) {
         try {
             $debugLevel = Config::system()->debugLevel();
         } catch (Throwable) {
-            $debugLevel = (int) ($_ENV['CHEVERETO_DEBUG_LEVEL'] ?? 1);
+            $envDebugLevel = getenv('CHEVERETO_DEBUG_LEVEL');
+            $debugLevel = $envDebugLevel === false
+                ? 1
+                : (int) $envDebugLevel;
         }
         $doDebug = in_array($debugLevel, [2, 3], true) || isDebug();
         $publicHandler = $publicHandler->withIsDebug($doDebug);

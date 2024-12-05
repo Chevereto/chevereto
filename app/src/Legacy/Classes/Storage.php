@@ -59,7 +59,7 @@ class Storage
         );
     }
 
-    public static function get(array $values = [], array $sort = [], int $limit = null): array
+    public static function get(array $values = [], array $sort = [], ?int $limit = null): array
     {
         $valueOperators = [
             'type_chain' => '&',

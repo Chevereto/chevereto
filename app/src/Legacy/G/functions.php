@@ -22,6 +22,7 @@ use FFMpeg\FFProbe;
 use GdImage;
 use LogicException;
 use Throwable;
+use function Chevereto\Legacy\getCheveretoEnv;
 use function Chevereto\Vars\env;
 use function Chevereto\Vars\server;
 use function Safe\curl_exec;
@@ -1963,7 +1964,7 @@ function get_app_setting(string $key): mixed
     ];
     $settingEnv = $settingsToEnv[$key] ?? null;
     $env = null;
-    if (isset($settingEnv) && array_key_exists($settingEnv, $_ENV)) {
+    if (isset($settingEnv) && array_key_exists($settingEnv, getCheveretoEnv())) {
         $env = getenv($settingEnv);
         if ($env === false) {
             $env = null;

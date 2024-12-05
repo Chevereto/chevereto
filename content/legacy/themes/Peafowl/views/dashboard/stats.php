@@ -29,7 +29,7 @@ if (!defined('ACCESS') || !ACCESS) {
     "Provide Chevereto license key by assigning the environment variable %e or by creating the %f file containing the license key.",
     [
         '%e' => '<code class="code font-weight-bold word-break-break-all">CHEVERETO_LICENSE_KEY</code>',
-        '%f' => '<code class="code font-weight-bold word-break-break-all">' . PATH_APP . 'CHEVERETO_LICENSE_KEY</code>',
+        '%f' => '<code class="code font-weight-bold word-break-break-all">' . PATH_APP . 'CHEVERETO_LICENSE_KEY.php</code>',
     ]
 ); ?></p>
     <p><?php _se('You can also set the license key in the textarea below.'); ?></p>

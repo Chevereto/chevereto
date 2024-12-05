@@ -9,6 +9,7 @@
  * file that was distributed with this source code.
  */
 
+use function Chevereto\Legacy\getCheveretoEnv;
 use function Chevereto\Legacy\loaderHandler;
 
 define('ACCESS', 'web');
@@ -16,7 +17,7 @@ define('REPL', true);
 require __DIR__ . '/legacy/load/loader.php';
 include loaderHandler(
     _cookie: [],
-    _env: $_ENV,
+    _env: getCheveretoEnv(),
     _files: [],
     _get: [],
     _post: [],
@@ -28,8 +29,7 @@ include loaderHandler(
 );
 
 return [
-    'startupMessage' =>
-        <<<EOM
+    'startupMessage' => <<<EOM
               __                        __
          ____/ /  ___ _  _____ _______ / /____
         / __/ _ \/ -_) |/ / -_) __/ -_) __/ _ \\

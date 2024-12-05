@@ -156,7 +156,7 @@ class Album
         sessionVar()->put('album_view_stock', $id);
     }
 
-    public static function getUrl(string $id_encoded, string $title = null): string
+    public static function getUrl(string $id_encoded, ?string $title = null): string
     {
         $seo = seoUrlfy($title ?? '');
         $url = $seo === ''

@@ -24,6 +24,11 @@ final class EnvVar
 
     public const REGEX_KEY = '/^' . self::PREFIX . '[A-Z0-9_]+$/';
 
+    public const PUTENV = [
+        'CHEVERETO_ENVIRONMENT',
+        'CHEVERETO_DEBUG_LEVEL',
+    ];
+
     /**
      * @param array<string, string> $array
      */
@@ -40,6 +45,11 @@ final class EnvVar
             K: string(self::REGEX_KEY)
         )($array);
         $this->assertNoInstance();
+        foreach (self::PUTENV as $putenv) {
+            if (array_key_exists($putenv, $array)) {
+                putenv($putenv . '=' . $array[$putenv]);
+            }
+        }
         static::$array = $array;
         static::$map = new Map($array);
     }

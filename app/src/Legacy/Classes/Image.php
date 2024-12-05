@@ -291,7 +291,7 @@ class Image
 
     public static function getAlbumSlice(
         int $image_id,
-        int $album_id = null,
+        ?int $album_id = null,
         int $padding = 2
     ): array {
         $tables = DB::getTables();
