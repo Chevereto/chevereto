@@ -27,6 +27,13 @@ This is the repository for **Chevereto Free** edition. You can [compare editions
 * [PHP](https://v4-docs.chevereto.com/application/stack/php.html) 8.1+ with [extensions](https://v4-docs.chevereto.com/application/stack/php.html#extensions)
 * [MySQL Server](https://v4-docs.chevereto.com/application/stack/mysql-server.html) 8.0.1+ or MariaDB Server 10.2.2+
 
+## Download
+
+Get Chevereto in one of these ways:
+
+* Direct download: Visit https://chevereto.com/api/download/latest
+* GitHub releases: Download the latest `4.x.x.zip` file from our [Releases page](https://github.com/chevereto/chevereto/releases)
+
 ## Install
 
 Chevereto runs anywhere, system requirements are minimal and it can run on any server.
