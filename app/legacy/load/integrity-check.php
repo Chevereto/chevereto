@@ -149,14 +149,28 @@ function phpCheck(SystemConfig $systemConfig): void
             $errors[] = strtr('%name (<a href="http://www.php.net/manual/%slug.php">%label</a>) is not loaded in this server. %desc.', $v);
         }
     }
+    $disabled_functions = explode(',', preg_replace('/\s+/', '', ini_get('disable_functions')));
+    $required_functions = ['putenv'];
+    if ($disabled_functions !== []) {
+        foreach ($required_functions as $v) {
+            if (! function_exists($v) || in_array($v, $disabled_functions)) {
+                $errors[] = strtr(str_replace('%t', 'function', $missing_tpl), [
+                    '%n' => $v,
+                    '%f' => $v,
+                    '%u' => str_replace('_', '-', strtolower($v)),
+                ]);
+            }
+        }
+    }
     $disabled_classes = explode(',', preg_replace('/\s+/', '', ini_get('disable_classes')));
+    $required_classes = ['DirectoryIterator', 'RegexIterator', 'Pdo', 'Exception'];
     if ($disabled_classes !== []) {
-        foreach (['DirectoryIterator', 'RegexIterator', 'Pdo', 'Exception'] as $k) {
-            if (in_array($k, $disabled_classes)) {
+        foreach ($required_classes as $v) {
+            if (in_array($v, $disabled_classes)) {
                 $errors[] = strtr(str_replace('%t', 'class', $missing_tpl), [
-                    '%n' => $k,
-                    '%f' => $k,
-                    '%u' => str_replace('_', '-', strtolower($k)),
+                    '%n' => $v,
+                    '%f' => $v,
+                    '%u' => str_replace('_', '-', strtolower($v)),
                 ]);
             }
         }

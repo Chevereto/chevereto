@@ -9,5 +9,5 @@
  * file that was distributed with this source code.
  */
 
-const APP_VERSION = '4.2.4';
+const APP_VERSION = '4.2.5';
 const APP_VERSION_AKA = 'regio';

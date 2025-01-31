@@ -11,7 +11,7 @@ CREATE TABLE `%table_prefix%login_providers` (
   KEY `login_provider_is_enabled` (`login_provider_is_enabled`)
 ) ENGINE=%table_engine% DEFAULT CHARSET=utf8mb4;
 INSERT INTO `%table_prefix%login_providers` VALUES ('1', 'facebook', 'Facebook', null, null, '0');
-INSERT INTO `%table_prefix%login_providers` VALUES ('2', 'twitter', 'Twitter', null, null, '0');
+INSERT INTO `%table_prefix%login_providers` VALUES ('2', 'twitter', 'X', null, null, '0');
 INSERT INTO `%table_prefix%login_providers` VALUES ('3', 'google', 'Google', null, null, '0');
 INSERT INTO `%table_prefix%login_providers` VALUES ('4', 'vkontakte', 'VK', null, null, '0');
 INSERT INTO `%table_prefix%login_providers` VALUES ('5', 'apple', 'Apple', null, null, '0');

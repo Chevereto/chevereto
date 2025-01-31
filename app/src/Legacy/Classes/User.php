@@ -723,7 +723,7 @@ class User
         if (isset($user['twitter_username'])) {
             $user['twitter'] = [
                 'username' => $user['twitter_username'],
-                'url' => 'https://twitter.com/' . $user['twitter_username'],
+                'url' => 'https://x.com/' . $user['twitter_username'],
             ];
         }
         unset($user['twitter_username']);

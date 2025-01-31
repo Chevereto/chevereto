@@ -60,7 +60,7 @@ class Login
             'label' => 'Google',
         ],
         'twitter' => [
-            'label' => 'Twitter',
+            'label' => 'X',
         ],
         'vk' => [
             'label' => 'VK',
@@ -726,12 +726,12 @@ class Login
 
     public static function getProviders(string $get = 'all'): array
     {
-        $return = [];
         if (! self::isMacanudo()) {
             return $get === 'all'
-                ? self::$providersPriorMacanudo
-                : self::getProvidersPriorMacanudo($get);
+            ? self::$providersPriorMacanudo
+            : self::getProvidersPriorMacanudo($get);
         }
+        $return = [];
         $binds = [];
         $query =
             <<<SQL
@@ -763,6 +763,9 @@ class Login
             $row['is_enabled'] = (bool) $row['is_enabled'];
             if (hasEncryption()) {
                 $row = decryptValues(self::ENCRYPTED_PROVIDER_NAMES, $row);
+            }
+            if ($name === 'twitter') {
+                $row['label'] = 'X';
             }
             $return[$name] = $row;
         }

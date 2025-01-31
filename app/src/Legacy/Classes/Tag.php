@@ -213,7 +213,7 @@ final class Tag
         MySQL;
         foreach ($tag as $pos => $name) {
             static::assert($name);
-            $sql .= strtr($template, '%', $pos);
+            $sql .= str_replace('%', $pos, $template);
             $binds[':tag_name_' . $pos] = $name;
         }
         $db = DB::getInstance();

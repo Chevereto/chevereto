@@ -1,8 +1,0 @@
-Chevereto 4.2.4 (2024-12-05)
-
-- Added Chevereto Lite edition
-- Added placeholders for comments code
-- Improved comment code page id
-- Improved ENV handling
-- Fixed bug affecting CLI runtime
-- Fixed bug affecting MariaDB 10.4 compatibility

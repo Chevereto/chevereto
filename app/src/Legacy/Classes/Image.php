@@ -1393,7 +1393,7 @@ class Image
 
         MySQL;
         if ($tag !== []) {
-            foreach ($tag as $index => $name) {
+            foreach ($tag as $pos => $name) {
                 try {
                     Tag::assert($name);
                 } catch (Exception) {
@@ -1419,11 +1419,12 @@ class Image
             WHERE `tag_id` = @TAG_ID;
 
             MySQL;
-            foreach ($tag as $index => $name) {
-                $sql .= strtr($template, '%', $index);
-                $binds[':tag_name_' . $index] = $name;
+            foreach ($tag as $pos => $name) {
+                $sql .= str_replace('%', $pos, $template);
+                $binds[':tag_name_' . $pos] = $name;
             }
         }
+        xr(sql: $sql, binds: $binds);
         $db = DB::getInstance();
         $db->query($sql);
         foreach ($binds as $key => $value) {

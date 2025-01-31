@@ -197,6 +197,7 @@ class Listing
                 0 => implode('.', $copy),
                 1 => decodeID($explode[$last]),
             ];
+            $array[1] = str_replace(chr(0), '', $array[1]);
             $this->seek = $array;
 
             return;

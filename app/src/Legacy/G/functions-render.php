@@ -81,9 +81,21 @@ function require_theme_header()
     require_theme_file('header');
 }
 
+/** @deprecate */
+function include_theme_header()
+{
+    require_theme_header();
+}
+
 function require_theme_footer()
 {
     require_theme_file('footer');
+}
+
+/** @deprecate */
+function include_theme_footer()
+{
+    require_theme_footer();
 }
 
 function get_theme_file_contents($filename)

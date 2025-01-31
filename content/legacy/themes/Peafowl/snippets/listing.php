@@ -17,7 +17,9 @@ if (!defined('ACCESS') || !ACCESS) {
     die('This file cannot be directly accessed.');
 }
 /** @var Listing $listing */
-$listing = (Handler::hasVar('listing') ? Handler::var('listing') : get_global('listing'));
+$listing = (Handler::hasVar('listing')
+    ? Handler::var('listing')
+    : get_global('listing'));
 $tabs = (array) (get_global('tabs') ? get_global('tabs') : Handler::var('tabs'));
 $isClassic = isset(get()['pagination']) || getSetting('listing_pagination_mode') == 'classic';
 $do_pagination = !isset($listing->pagination) or $listing->pagination == true ? true : false;
@@ -34,7 +36,7 @@ foreach ($tabs as $tab) {
         ?>
         <div id="<?php echo $tab["id"]; ?>" class="tabbed-content content-listing visible list-<?php echo $tab["type"]; ?>" data-action="list" data-list="<?php echo $tab["type"]; ?>" data-params="<?php echo $tab["params"]; ?>" data-params-hidden="<?php echo $tab["params_hidden"] ?? ''; ?>">
 <?php
-        if ($listing->output !== []) {
+        if ($listing && $listing->output !== []) {
 ?>
                 <div class="pad-content-listing">
 <?php

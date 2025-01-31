@@ -423,6 +423,7 @@ return function (Handler $handler) {
                     break;
                 case 'change-email-confirm':
                     $email_candidate = $confirmation_db['confirmation_extra'];
+                    /** @var array|false $email_db */
                     $email_db = DB::get(
                         table: 'users',
                         where: [
@@ -430,7 +431,7 @@ return function (Handler $handler) {
                         ],
                         limit: 1
                     );
-                    if (! $email_db) {
+                    if (is_array($email_db) && $email_db !== []) {
                         if ($email_db['user_status'] === 'valid') {
                             Confirmation::delete([
                                 'id' => $confirmation_db['confirmation_id'],

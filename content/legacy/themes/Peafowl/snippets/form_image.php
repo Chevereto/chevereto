@@ -2,6 +2,8 @@
 
 use Chevereto\Legacy\Classes\Settings;
 use Chevereto\Legacy\G\Handler;
+
+use function Chevereto\Legacy\G\get_global;
 use function Chevereto\Legacy\G\require_theme_file;
 
 // @phpstan-ignore-next-line
@@ -19,8 +21,9 @@ if (!defined('ACCESS') || !ACCESS) {
     <div class="input-below font-size-small"></div>
 </div>
 <?php
-    if (!Handler::hasVar('image') || isset(Handler::var('image')['user'])) {
-        ?>
+$user_items_editor = get_global('user_items_editor') ?: Handler::var('user_items_editor');
+$user_albums = $user_items_editor['user_albums'] ?? [];
+if ($user_albums !== []) { ?>
 <div id="move-existing-album" data-view="switchable" class="c8 input-label">
     <?php require_theme_file("snippets/form_move_existing_album"); ?>
 </div>
